@@ -1,0 +1,6 @@
+
+services:
+  arobases.listener.admin.menu_builder:
+      class: Arobases\SyliusCustomerSupportPlugin\Menu\AdminMenuListener
+      tags:
+          - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }

@@ -1,0 +1,41 @@
+sylius_grid:
+  grids:
+    arobases_admin_customer_support:
+      driver:
+        name: doctrine/orm
+        options:
+          class: '%arobases_sylius_customer_support_plugin.model.customer_support.class%'
+
+      fields:
+        date:
+          type: datetime
+          label: sylius.ui.date
+          path: updatedAt
+          options:
+            format: d-m-Y H:i:s
+        number:
+          type: twig
+          label: sylius.ui.number
+          path: order
+          sortable: ~
+          options:
+            template: "@SyliusAdmin/Order/Grid/Field/number.html.twig"
+        channel:
+          type: twig
+          label: sylius.ui.channel
+          path: order.channel
+          sortable: channel.code
+          options:
+            template: "@SyliusAdmin/Order/Grid/Field/channel.html.twig"
+        customer:
+          type: twig
+          label: sylius.ui.customer
+          sortable: order.customer.lastName
+          options:
+            template: "@SyliusAdmin/Order/Grid/Field/customer.html.twig"
+      actions:
+        item:
+          update:
+            type: update
+          delete:
+            type: delete

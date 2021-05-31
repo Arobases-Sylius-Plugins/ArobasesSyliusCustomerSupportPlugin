@@ -1,0 +1,56 @@
+arobases_sylius_customer_support_plugin_admin_customer_support_index:
+  path: /customer_support
+  methods: [GET]
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
+    _sylius:
+      permission: true
+      section: admin
+      grid: arobases_admin_customer_support
+
+#
+#arobases_sylius_customer_support_admin_create:
+#  path: /customer_support/create
+#  methods: [GET,POST]
+#  defaults:
+#    _controller: app.controller.partner::createAction
+#    _sylius:
+#      permission: true
+#      section: admin
+#      redirect: app_admin_partner_index
+#      vars:
+#        templates:
+#          form: '@SyliusAdmin/Partner/form.html.twig'
+#
+
+
+arobases_sylius_customer_support_plugin_admin_customer_support_update:
+  path: /customer_support/{id}/update
+  methods: [GET,PUT]
+  requirements:
+    id: \d+
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::updateAction
+    _sylius:
+      permission: true
+      section: admin
+      redirect: arobases_sylius_customer_support_plugin_admin_customer_support_update
+      vars:
+        templates:
+
+          form: '@ArobasesSyliusCustomerSupportPlugin/Admin/form.html.twig'
+
+
+arobases_sylius_customer_support_plugin_admin_customer_support_delete:
+  path: /customer_support/{id}/delete
+  methods: [DELETE]
+  requirements:
+    id: \d+
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::deleteAction
+    _sylius:
+      permission: true
+      section: admin
+      redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index
+
+

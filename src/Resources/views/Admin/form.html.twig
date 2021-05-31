@@ -1,0 +1,17 @@
+{#{{ form_row(form.customer) }}#}
+{#{{ form_row(form.order) }}#}
+
+{#{% for customerSupportAnswersField in form.customerSupportAnswers %}#}
+{#    <li>#}
+{#        {{ form_errors(customerSupportAnswersField) }}#}
+{#        {{ form_widget(customerSupportAnswersField) }}#}
+{#    </li>#}
+{#{% endfor %}#}
+
+{#{{   dump(resource.customerSupportAnswers) }}#}
+
+{% for customerSupportAnswer in resource.customerSupportAnswers %}
+
+    <p>{{ customerSupportAnswer.filePath }}</p>
+
+{% endfor %}

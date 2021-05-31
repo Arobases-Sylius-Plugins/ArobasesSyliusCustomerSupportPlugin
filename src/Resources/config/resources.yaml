@@ -1,0 +1,18 @@
+sylius_resource:
+    resources:
+        arobases_sylius_customer_support_plugin.customer_support:
+            driver: doctrine/orm
+            classes:
+                model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport
+                form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
+            templates: '@SyliusAdmin/Crud'
+
+        arobases_sylius_customer_support_plugin.customer_support_answers:
+            driver: doctrine/orm
+            classes:
+                model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswers
+
+
+
+imports:
+    - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/grids.yaml" }

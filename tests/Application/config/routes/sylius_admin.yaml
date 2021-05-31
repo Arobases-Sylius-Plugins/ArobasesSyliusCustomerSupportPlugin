@@ -1,0 +1,7 @@
+sylius_admin:
+    resource: "@SyliusAdminBundle/Resources/config/routing.yml"
+    prefix: /admin
+
+
+arobases_customer_support:
+    resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/admin_routing.yml"
