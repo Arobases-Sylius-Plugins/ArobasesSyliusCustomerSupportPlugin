@@ -28,9 +28,9 @@ class CustomerSupport implements ResourceInterface {
 
     /**
      * @var bool
-     * @ORM\Column(type="enabled")
+     * @ORM\Column(type="boolean")
      */
-    protected $enabled;
+    protected $enabled = true;
 
     /**
      * @ORM\Id()
@@ -52,8 +52,10 @@ class CustomerSupport implements ResourceInterface {
     protected ?Order $order = null;
 
     /**
-     * @ORM\OneToMany(targetEntity="Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswers", mappedBy="customerSupport", fetch="EXTRA_LAZY")
-     *
+     * @ORM\OneToMany(targetEntity="Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer",
+     *     mappedBy="customerSupport", fetch="EXTRA_LAZY",
+     *     cascade={"persist", "remove"}
+     *      )
      */
 
     protected Collection $customerSupportAnswers;
@@ -98,7 +100,7 @@ class CustomerSupport implements ResourceInterface {
         return $this->customerSupportAnswers;
     }
 
-    public function addCustomerSupportAnswer(CustomerSupportAnswers $answer): void
+    public function addCustomerSupportAnswer(CustomerSupportAnswer $answer): void
     {
         if (!$this->hasCustomerSupportAnswer($answer)) {
             $this->customerSupportAnswers->add($answer);
@@ -106,7 +108,7 @@ class CustomerSupport implements ResourceInterface {
         }
     }
 
-    public function removeCustomerSupportAnswer(CustomerSupportAnswers $answer): void
+    public function removeCustomerSupportAnswer(CustomerSupportAnswer $answer): void
     {
         if ($this->hasCustomerSupportAnswer($answer)) {
             $answer->setCustomerSupport(null);
@@ -114,7 +116,7 @@ class CustomerSupport implements ResourceInterface {
         }
     }
 
-    public function hasCustomerSupportAnswer(CustomerSupportAnswers $answer): bool
+    public function hasCustomerSupportAnswer(CustomerSupportAnswer $answer): bool
     {
         return $this->customerSupportAnswers->contains($answer);
     }

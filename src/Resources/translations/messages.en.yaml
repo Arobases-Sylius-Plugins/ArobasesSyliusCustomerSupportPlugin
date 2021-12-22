@@ -1,0 +1,27 @@
+arobases_sylius_customer_support:
+  form:
+    to_respond: To respond
+    to_create: Créer
+  ui:
+    edit_customer_support:
+    new_message: new message
+    updated_at: Date last update
+    created_at: Date creation
+    customer_support: List of yours tickets
+    browse_your_customer_support: Browse yours tickets
+    order_number: Order number
+    ticket: Ticket
+    new_ticket: New ticket
+    you: You
+    client: Client
+  menu:
+    admin:
+      customer_support: Customer support
+    shop:
+      account:
+        customer_support: Customer support
+
+arobases_sylius_customer_support_plugin:
+  ui:
+    edit_customer_support: Modification of a ticket
+    customer_supports: List of tickets

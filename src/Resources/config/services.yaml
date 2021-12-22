@@ -4,3 +4,25 @@ services:
       class: Arobases\SyliusCustomerSupportPlugin\Menu\AdminMenuListener
       tags:
           - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
+
+  Arobases\SyliusCustomerSupportPlugin\Menu\AccountMenuBuilder:
+    decorates: sylius.shop.menu_builder.account
+    arguments:
+      - '@knp_menu.factory'
+      - '@event_dispatcher'
+
+
+  arobases.form.type.shop.order_choice:
+    class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\OrderChoiceType
+    tags:
+      - { name: form.type}
+    arguments:
+      - '@sylius.repository.order'
+      - '@sylius.context.customer'
+
+  Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:
+    tags: ['controller.service_arguments']
+    arguments:
+      - '@arobases_sylius_customer_support_plugin.repository.customer_support'
+      - '@Symfony\Component\Routing\RouterInterface'
+      - '@doctrine.orm.default_entity_manager'

@@ -1,0 +1,25 @@
+arobases_sylius_customer_support:
+    form:
+        to_respond: Répondre
+        to_create: Créer
+    ui:
+        new_message: Nouveau message
+        updated_at: Date dernière mise à jour
+        created_at: Date création
+        customer_support: Liste de vos tickets
+        browse_your_customer_support: Parcourir vos tickets
+        order_number: Numero de commande
+        ticket: Ticket
+        new_ticket: Nouveau ticket
+        you: Vous
+        client: Client
+    menu:
+        admin:
+            customer_support: Service après vente
+        shop:
+            account:
+                customer_support: Service après vente
+arobases_sylius_customer_support_plugin:
+    ui:
+        edit_customer_support: Modification d'un SAV
+        customer_supports: Liste des Services après vente

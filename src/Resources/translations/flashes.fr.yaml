@@ -1,0 +1,4 @@
+arobases_sylius_customer_support:
+  account:
+    add_response: Votre réponse a bien été ajoutée
+    create_ticket: Votre SAV a bien été créé

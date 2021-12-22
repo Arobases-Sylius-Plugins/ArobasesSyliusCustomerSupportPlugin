@@ -1,2 +1,53 @@
-# Delete these routes and define your own shop routes here
+arobases_sylius_customer_support_plugin_shop_account_customer_support_index:
+  path: /account/customer_support
+  methods: [GET]
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
+    _sylius:
+      section: shop_account
+      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/index.html.twig"
+      grid: arobases_shop_customer_support
 
+
+arobases_sylius_customer_support_plugin_shop_account_customer_support_show:
+  path: /account/customer_support/{id}
+  methods: [GET]
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support:showAction
+    _sylius:
+      section: shop_account
+      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/show.html.twig"
+      repository:
+        method: find
+        arguments:
+          - $id
+
+
+arobases_sylius_customer_support_plugin_shop_customer_support_update:
+  path: /customer_support/{id}/update
+  methods: [GET, PUT, POST]
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support:updateAction
+    _sylius:
+      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/form.html.twig"
+      form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportType
+      repository:
+        method: find
+        arguments:
+          - $id
+      redirect:
+        route: arobases_sylius_customer_support_plugin_shop_customer_support_update
+      flash: arobases_sylius_customer_support.account.add_response
+
+arobases_sylius_customer_support_plugin_shop_customer_support_create:
+  path: /customer_support/add
+  methods: [GET, POST]
+  defaults:
+    _controller: arobases_sylius_customer_support_plugin.controller.customer_support:createAction
+    _sylius:
+      section: shop_account
+      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/_form_create.html.twig"
+      form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
+      redirect:
+        route: arobases_sylius_customer_support_plugin_shop_customer_support_update
+      flash: arobases_sylius_customer_support.account.create_ticket

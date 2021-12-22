@@ -1,0 +1,26 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block title %}{{ 'arobases_sylius_customer_support.ui.new_ticket'|trans }}  | {{ parent() }}{% endblock %}
+
+{#{% block breadcrumb %}#}
+{#    {% include '@SyliusShop/Account/Order/Show/_breadcrumb.html.twig' %}#}
+{#{% endblock %}#}
+
+{% block subcontent %}
+
+    {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_create'),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+    {{ form_row(form.order) }}
+    {{ form_row(form.customerSupportAnswers) }}
+
+    <div class="ui hidden divider"></div>
+    <div class="ui buttons">
+        <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support.form.to_create'|trans }}</button>
+    </div>
+
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+
+{% endblock %}
+
+
+

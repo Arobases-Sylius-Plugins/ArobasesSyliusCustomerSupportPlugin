@@ -1,4 +1,7 @@
 sylius_grid:
+  templates:
+    action:
+      close_ticket_admin: '@ArobasesSyliusCustomerSupportPlugin\Admin\Field\customer_support_status.html.twig'
   grids:
     arobases_admin_customer_support:
       driver:
@@ -7,6 +10,12 @@ sylius_grid:
           class: '%arobases_sylius_customer_support_plugin.model.customer_support.class%'
 
       fields:
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          path: .
+          options:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/enabled.html.twig"
         date:
           type: datetime
           label: sylius.ui.date
@@ -33,9 +42,66 @@ sylius_grid:
           sortable: order.customer.lastName
           options:
             template: "@SyliusAdmin/Order/Grid/Field/customer.html.twig"
+
       actions:
         item:
           update:
             type: update
           delete:
             type: delete
+          close_ticket:
+            type: close_ticket_admin
+            label: arobases_sylius_customer_support.ui.close_ticket
+            icon: 'cart plus'
+    arobases_shop_customer_support:
+      driver:
+        name: doctrine/orm
+        options:
+          class: '%arobases_sylius_customer_support_plugin.model.customer_support.class%'
+      sorting:
+        date_updated_at: desc
+      fields:
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          path: .
+          options:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/enabled.html.twig"
+        date_updated_at:
+          type: datetime
+          label: arobases_sylius_customer_support.ui.updated_at
+          path: updatedAt
+          options:
+            format: d-m-Y H:i:s
+        date_created_at:
+          type: datetime
+          label: arobases_sylius_customer_support.ui.created_at
+          path: createdAt
+          options:
+            format: d-m-Y H:i:s
+        number:
+          type: twig
+          label: arobases_sylius_customer_support.ui.order_number
+          path: order
+          sortable: ~
+          options:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/number.html.twig"
+      actions:
+        item:
+          show:
+            type: shop_show
+            label: sylius.ui.show
+            options:
+              link:
+                route: arobases_sylius_customer_support_plugin_shop_customer_support_update
+                parameters:
+                  id: resource.id
+#          pay:
+#            type: shop_pay
+#            label: sylius.ui.pay
+#            options:
+#              link:
+#                route: sylius_shop_order_show
+#                parameters:
+#                  tokenValue: resource.tokenValue
+

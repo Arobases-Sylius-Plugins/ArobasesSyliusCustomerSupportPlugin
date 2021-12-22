@@ -7,12 +7,14 @@ sylius_resource:
                 form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
             templates: '@SyliusAdmin/Crud'
 
-        arobases_sylius_customer_support_plugin.customer_support_answers:
+        arobases_sylius_customer_support_plugin.customer_support_answer:
             driver: doctrine/orm
             classes:
-                model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswers
-
+                model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer
+                form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportAnswerType
+            templates: '@SyliusAdmin/Crud'
 
 
 imports:
     - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/grids.yaml" }
+    - { resource: config.yaml }

@@ -1,0 +1,62 @@
+sylius_ui:
+    events:
+      arobases_sylius_customer_support.admin.update:
+        blocks:
+          before_header_legacy:
+            template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+            priority: 25
+            context:
+              postfix: update.before_header
+          header:
+            template: "@SyliusAdmin/Crud/Update/_header.html.twig"
+            priority: 20
+          after_header_legacy:
+            template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+            priority: 15
+            context:
+              postfix: update.after_header
+          content:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Crud/Update/content_add_response.html.twig"
+            priority: 10
+          after_content:
+            template: "@SyliusAdmin/Crud/Block/_legacySonataEvent.html.twig"
+            priority: 5
+            context:
+              postfix: update.after_content
+
+      arobases_sylius_customer_support.shop.account.customer_support.index.subcontent:
+         blocks:
+          header:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/Index/_header.html.twig"
+            priority: 20
+          customer_support_create:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/Index/_create.html.twig"
+            priority: 18
+          after_content_header_legacy:
+            template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+            priority: 15
+            context:
+              event: arobases_sylius_customer_support.shop.account.customer_support.index.after_content_header
+          subcontent:
+            template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/Index/_subcontent.html.twig"
+            priority: 10
+
+
+      arobases_sylius_customer_support.account.customer_support.show.subcontent:
+        blocks:
+          header:
+            template: "@SyliusShop/Account/Order/Show/_header.html.twig"
+            priority: 20
+          after_content_header_legacy:
+            template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+            priority: 15
+            context:
+              event: sylius.shop.account.order.show.after_content_header
+          summary:
+            template: "@SyliusShop/Common/Order/_summary.html.twig"
+            priority: 10
+          after_summary_legacy:
+            template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+            priority: 5
+            context:
+              event: sylius.shop.account.order.show.after_summary

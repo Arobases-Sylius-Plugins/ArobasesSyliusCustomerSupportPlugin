@@ -1,0 +1,11 @@
+<form action="{{ path('arobases_sylius_customer_support_admin_customer_support_change_status', {'id': data.id}) }}" method="POST" name="arobases_sylius_customer_support_admin_customer_support_change_status">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="app_admin_order_completed[_token]" value="{{ csrf_token('arobases_sylius_customer_support_admin_customer_support_change_status') }}" />
+    {% if data.enabled == 1 %}
+
+        <button class="ui blue icon button" type="submit" data-requires-confirmation>
+            <i class="thumbs up outline icon"></i>
+            {{ action.label|default('arobases_sylius_customer_support.ui.ticket_open')|trans }}
+        </button>
+    {% endif %}
+</form>

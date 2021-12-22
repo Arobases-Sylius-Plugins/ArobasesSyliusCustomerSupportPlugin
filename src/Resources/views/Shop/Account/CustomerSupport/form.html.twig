@@ -1,0 +1,45 @@
+{% extends '@SyliusShop/Account/layout.html.twig' %}
+
+{% block title %}{{ 'arobases_sylius_customer_support.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
+
+{#{% block breadcrumb %}#}
+{#    {% include '@SyliusShop/Account/Order/Show/_breadcrumb.html.twig' %}#}
+{#{% endblock %}#}
+
+{% block subcontent %}
+    {{'sylius.ui.order'|trans }} #{{ resource.order.number }}
+    </br>
+    {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_update', {'id': resource.id}),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+
+    <div class="ui comments">
+        {% for customerSupportAnswer in resource.customerSupportAnswers %}
+                <div class="comment">
+                    <div class="content">
+                        <span class="author">{% if customerSupportAnswer.author == 'admin' %} {{  sylius.channel.name }} {% else %}  ({{'arobases_sylius_customer_support.ui.you'|trans }}) - {{ customerSupportAnswer.author }} {% endif %}</span>
+                        <div class="metadata">
+                            <span class="date">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
+                        </div>
+                        <div class="text">  <p>{{ customerSupportAnswer.message }}</p></div>
+
+                        {#         <p>{{ customerSupportAnswer.filePath }}</p>#}
+                    </div>
+                </div>
+
+
+        {% endfor %}
+    </div>
+    {{ form_row(form.customerSupportAnswers) }}
+
+    <div class="ui hidden divider"></div>
+    <div class="ui buttons">
+        <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support.form.to_respond'|trans }}</button>
+{#        {% include '@SyliusUi/Form/Buttons/_cancel.html.twig' with {'path': paths.cancel|default(null)} %}#}
+    </div>
+
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+
+{% endblock %}
+
+
+

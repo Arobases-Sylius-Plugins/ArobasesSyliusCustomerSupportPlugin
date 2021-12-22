@@ -1,5 +1,5 @@
 arobases_sylius_customer_support_plugin_admin_customer_support_index:
-  path: /customer_support
+  path: /admin/customer_support
   methods: [GET]
   defaults:
     _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
@@ -7,6 +7,9 @@ arobases_sylius_customer_support_plugin_admin_customer_support_index:
       permission: true
       section: admin
       grid: arobases_admin_customer_support
+
+
+
 
 #
 #arobases_sylius_customer_support_admin_create:
@@ -25,7 +28,7 @@ arobases_sylius_customer_support_plugin_admin_customer_support_index:
 
 
 arobases_sylius_customer_support_plugin_admin_customer_support_update:
-  path: /customer_support/{id}/update
+  path: /admin/customer_support/{id}/update
   methods: [GET,PUT]
   requirements:
     id: \d+
@@ -35,10 +38,11 @@ arobases_sylius_customer_support_plugin_admin_customer_support_update:
       permission: true
       section: admin
       redirect: arobases_sylius_customer_support_plugin_admin_customer_support_update
+      template: '@ArobasesSyliusCustomerSupportPlugin/Admin/Crud/update.html.twig'
       vars:
         templates:
-
           form: '@ArobasesSyliusCustomerSupportPlugin/Admin/form.html.twig'
+
 
 
 arobases_sylius_customer_support_plugin_admin_customer_support_delete:
@@ -54,3 +58,12 @@ arobases_sylius_customer_support_plugin_admin_customer_support_delete:
       redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index
 
 
+
+arobases_sylius_customer_support_admin_customer_support_change_status:
+  path: /customer_support/{id}/changeStatus
+  methods: [PATCH]
+  defaults:
+    _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:changeStatus
+    _sylius:
+      section: admin
+      redirect:  arobases_sylius_customer_support_plugin_admin_customer_support_index

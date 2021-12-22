@@ -1,17 +1,21 @@
-{#{{ form_row(form.customer) }}#}
-{#{{ form_row(form.order) }}#}
-
-{#{% for customerSupportAnswersField in form.customerSupportAnswers %}#}
-{#    <li>#}
-{#        {{ form_errors(customerSupportAnswersField) }}#}
-{#        {{ form_widget(customerSupportAnswersField) }}#}
-{#    </li>#}
-{#{% endfor %}#}
-
-{#{{   dump(resource.customerSupportAnswers) }}#}
-
+{{'sylius.ui.order'|trans }} #{{ resource.order.number }}
+</br>
+{{'sylius.ui.customer'|trans }} : {{ resource.customer.email }}
+<div class="ui comments">
 {% for customerSupportAnswer in resource.customerSupportAnswers %}
+        <div class="comment">
+            <div class="content">
+                <span class="author">{% if customerSupportAnswer.author == resource.customer.fullname %} ({{'arobases_sylius_customer_support.ui.client'|trans }}) - {{ resource.customer.fullname }}  {% else %}  {{'arobases_sylius_customer_support.ui.you'|trans }}  {% endif %}</span>
+                <div class="metadata">
+                     <span class="date">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
+                </div>
+                <div class="text">  <p>{{ customerSupportAnswer.message }}</p></div>
 
-    <p>{{ customerSupportAnswer.filePath }}</p>
+{#         <p>{{ customerSupportAnswer.filePath }}</p>#}
+            </div>
+        </div>
+
 
 {% endfor %}
+</div>
+{{ form_row(form.customerSupportAnswers) }}
