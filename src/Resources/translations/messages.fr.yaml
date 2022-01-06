@@ -13,6 +13,10 @@ arobases_sylius_customer_support:
         new_ticket: Nouveau ticket
         you: Vous
         client: Client
+        open_ticket: Réouvrir le ticket
+        close_ticket: Fermer le ticket
+        attachment: Pièce jointe
+        open: Ouvert
     menu:
         admin:
             customer_support: Service après vente

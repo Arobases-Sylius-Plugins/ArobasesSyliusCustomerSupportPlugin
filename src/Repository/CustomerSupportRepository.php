@@ -1,22 +1,21 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\Repository;
 
-use Doctrine\ORM\QueryBuilder;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Core\Model\CustomerInterface;
 
 final class CustomerSupportRepository extends EntityRepository
 {
-    public function findOneByIdAndCustomer(string $number, CustomerInterface $customer): ?OrderInterface
+    public function findOneByIdAndCustomer(string $id, CustomerInterface $customer)
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.customer = :customer')
-            ->andWhere('o.number = :number')
+        return $this->createQueryBuilder('customer_support')
+            ->where('customer_support.customer = :customer')
+            ->andWhere('customer_support.id = :id')
             ->setParameter('customer', $customer)
-            ->setParameter('number', $number)
+            ->setParameter('id', $id)
             ->getQuery()
             ->getOneOrNullResult()
             ;

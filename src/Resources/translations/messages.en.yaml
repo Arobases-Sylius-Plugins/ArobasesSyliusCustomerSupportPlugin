@@ -14,6 +14,8 @@ arobases_sylius_customer_support:
     new_ticket: New ticket
     you: You
     client: Client
+    attachment: Attachment
+    open: Open
   menu:
     admin:
       customer_support: Customer support

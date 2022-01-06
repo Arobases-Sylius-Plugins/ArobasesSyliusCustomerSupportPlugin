@@ -43,10 +43,8 @@ arobases_sylius_customer_support_plugin_admin_customer_support_update:
         templates:
           form: '@ArobasesSyliusCustomerSupportPlugin/Admin/form.html.twig'
 
-
-
 arobases_sylius_customer_support_plugin_admin_customer_support_delete:
-  path: /customer_support/{id}/delete
+  path: /admin/customer_support/{id}/delete
   methods: [DELETE]
   requirements:
     id: \d+
@@ -57,10 +55,8 @@ arobases_sylius_customer_support_plugin_admin_customer_support_delete:
       section: admin
       redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index
 
-
-
 arobases_sylius_customer_support_admin_customer_support_change_status:
-  path: /customer_support/{id}/changeStatus
+  path: /admin/customer_support/{id}/changeStatus
   methods: [PATCH]
   defaults:
     _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:changeStatus

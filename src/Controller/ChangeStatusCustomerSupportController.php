@@ -30,8 +30,6 @@ final class ChangeStatusCustomerSupportController
     }
 
 
-
-
     public function changeStatus(Request $request)
     {
         $customerSupportId = $request->attributes->get('id');

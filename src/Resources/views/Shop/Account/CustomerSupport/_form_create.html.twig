@@ -2,15 +2,12 @@
 
 {% block title %}{{ 'arobases_sylius_customer_support.ui.new_ticket'|trans }}  | {{ parent() }}{% endblock %}
 
-{#{% block breadcrumb %}#}
-{#    {% include '@SyliusShop/Account/Order/Show/_breadcrumb.html.twig' %}#}
-{#{% endblock %}#}
-
 {% block subcontent %}
 
     {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_create'),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
     {{ form_row(form.order) }}
-    {{ form_row(form.customerSupportAnswers) }}
+    {{ form_row(form.customerSupportAnswers.file) }}
+    {{ form_row(form.customerSupportAnswers.message) }}
 
     <div class="ui hidden divider"></div>
     <div class="ui buttons">

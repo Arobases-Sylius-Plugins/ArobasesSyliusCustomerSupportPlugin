@@ -1,10 +1,6 @@
 {% extends '@SyliusShop/Account/layout.html.twig' %}
 {% block title %}{{ 'arobases_sylius_customer_support.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
 
-{#{% block breadcrumb %}#}
-{#    {% include '@SyliusShop/Account/Order/Show/_breadcrumb.html.twig' %}#}
-{#{% endblock %}#}
-
 {% block subcontent %}
     {{ sylius_template_event('sylius.shop.account.order.show.subcontent', _context) }}
 {% endblock %}

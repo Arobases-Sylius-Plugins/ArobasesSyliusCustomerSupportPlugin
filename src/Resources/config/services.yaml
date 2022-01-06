@@ -1,4 +1,3 @@
-
 services:
   arobases.listener.admin.menu_builder:
       class: Arobases\SyliusCustomerSupportPlugin\Menu\AdminMenuListener
@@ -11,7 +10,6 @@ services:
       - '@knp_menu.factory'
       - '@event_dispatcher'
 
-
   arobases.form.type.shop.order_choice:
     class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\OrderChoiceType
     tags:
@@ -20,9 +18,46 @@ services:
       - '@sylius.repository.order'
       - '@sylius.context.customer'
 
+  arobases.form.type.shop.customer_support:
+    class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportType
+    tags:
+      - { name: form.type}
+    arguments:
+      - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
+
+  arobases.form.type.shop.customer_support_create:
+    class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
+    tags:
+      - { name: form.type}
+    arguments:
+      - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
+
+  arobases.form.type.admin.customer_support:
+    class: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
+    tags:
+      - { name: form.type}
+    arguments:
+      - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
+
+
   Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:
     tags: ['controller.service_arguments']
     arguments:
       - '@arobases_sylius_customer_support_plugin.repository.customer_support'
       - '@Symfony\Component\Routing\RouterInterface'
       - '@doctrine.orm.default_entity_manager'
+
+  arobases_sylius_customer_support_plugin.provider.file_name_provider:
+    class:  Arobases\SyliusCustomerSupportPlugin\Files\Provider\FileNameProvider
+    arguments:
+      - '@filesystem'
+
+  arobases_sylius_customer_support_plugin.uploader.customer_support_answer:
+    class: Arobases\SyliusCustomerSupportPlugin\Files\Uploader\CustomerSupportAnswerUploader
+    arguments:
+      - '@filesystem'
+      - '@arobases_sylius_customer_support_plugin.provider.file_name_provider'
+      - '%kernel.project_dir%/public/'
+      - 'media/image/'
+
+

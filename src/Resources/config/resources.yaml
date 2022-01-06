@@ -5,6 +5,7 @@ sylius_resource:
             classes:
                 model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport
                 form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
+                repository: Arobases\SyliusCustomerSupportPlugin\Repository\CustomerSupportRepository
             templates: '@SyliusAdmin/Crud'
 
         arobases_sylius_customer_support_plugin.customer_support_answer:

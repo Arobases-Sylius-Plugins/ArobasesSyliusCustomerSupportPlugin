@@ -9,13 +9,18 @@
                 <div class="metadata">
                      <span class="date">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
                 </div>
-                <div class="text">  <p>{{ customerSupportAnswer.message }}</p></div>
-
-{#         <p>{{ customerSupportAnswer.filePath }}</p>#}
+                <div class="text">
+                    {% if customerSupportAnswer.filePath is not null %}
+                        <a href=" /{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support.ui.attachment'|trans }}</a>
+                    {% endif %}
+                    <p>{{ customerSupportAnswer.message }}</p>
+                </div>
             </div>
         </div>
-
-
 {% endfor %}
 </div>
-{{ form_row(form.customerSupportAnswers) }}
+
+{% if resource.enabled == 1  %}
+    {{ form_row(form.customerSupportAnswers.file) }}
+    {{ form_row(form.customerSupportAnswers.message) }}
+{% endif %}

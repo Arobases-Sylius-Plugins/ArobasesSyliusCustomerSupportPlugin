@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\Form\Admin;
 
-
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport;
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer;
-use Sylius\Component\Customer\Model\Customer;
-use Sylius\Component\Order\Model\Order;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Arobases\SyliusCustomerSupportPlugin\Files\Uploader\CustomerSupportAnswerUploader;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -17,6 +14,12 @@ use Symfony\Component\Form\FormEvents;
 
 final class CustomerSupportType extends AbstractType
 {
+    private CustomerSupportAnswerUploader $customerSupportAnswerUploader;
+
+    public function __construct(CustomerSupportAnswerUploader $customerSupportAnswerUploader)
+    {
+        $this->customerSupportAnswerUploader = $customerSupportAnswerUploader;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -33,14 +36,19 @@ final class CustomerSupportType extends AbstractType
     {
         /** @var CustomerSupport $data */
         $data = $event->getData();
-
         $form = $event->getForm();
+        $file = null;
         $message = $form->get('customerSupportAnswers')->getData()['message'];
-
+        if(array_key_exists('file',$form->get('customerSupportAnswers')->getData() ))
+            $file = $form->get('customerSupportAnswers')->getData()['file'];
         $customerSupportAnswer = new CustomerSupportAnswer();
         $customerSupportAnswer->setMessage($message);
         $customerSupportAnswer->setCustomerSupport($data);
         $customerSupportAnswer->setAuthor('admin');
+        if ($file !== null) {
+            $pathFile = $this->customerSupportAnswerUploader->upload($file);
+            $customerSupportAnswer->setFilePath($pathFile);
+        }
 
         $data->addCustomerSupportAnswer($customerSupportAnswer);
 

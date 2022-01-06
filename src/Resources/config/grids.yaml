@@ -2,31 +2,39 @@ sylius_grid:
   templates:
     action:
       close_ticket_admin: '@ArobasesSyliusCustomerSupportPlugin\Admin\Field\customer_support_status.html.twig'
+      close_ticket_shop: '@ArobasesSyliusCustomerSupportPlugin\Shop\Field\customer_support_status.html.twig'
   grids:
     arobases_admin_customer_support:
       driver:
         name: doctrine/orm
         options:
           class: '%arobases_sylius_customer_support_plugin.model.customer_support.class%'
-
+      sorting:
+        date_updated_at: desc
       fields:
         enabled:
           type: twig
-          label: sylius.ui.enabled
+          label: arobases_sylius_customer_support.ui.open
           path: .
           options:
             template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/enabled.html.twig"
-        date:
+        date_updated_at:
           type: datetime
-          label: sylius.ui.date
+          label: arobases_sylius_customer_support.ui.updated_at
           path: updatedAt
+          sortable: updatedAt
+          options:
+            format: d-m-Y H:i:s
+        date_created_at:
+          type: datetime
+          label: arobases_sylius_customer_support.ui.created_at
+          path: createdAt
           options:
             format: d-m-Y H:i:s
         number:
           type: twig
           label: sylius.ui.number
           path: order
-          sortable: ~
           options:
             template: "@SyliusAdmin/Order/Grid/Field/number.html.twig"
         channel:
@@ -42,7 +50,39 @@ sylius_grid:
           sortable: order.customer.lastName
           options:
             template: "@SyliusAdmin/Order/Grid/Field/customer.html.twig"
-
+      filters:
+        number:
+          type: string
+          label: sylius.ui.number
+          options:
+            fields: [order.number]
+        customer:
+          type: string
+          label: sylius.ui.customer
+          options:
+            fields: [customer.email, customer.firstName, customer.lastName]
+        date_updated_at:
+          type: date
+          label: arobases_sylius_customer_support.ui.updated_at
+          options:
+            field: updatedAt
+            inclusive_to: true
+        date_created_at:
+          type: date
+          label: arobases_sylius_customer_support.ui.created_at
+          options:
+            field: createdAt
+            inclusive_to: true
+        channel:
+          type: entity
+          label: sylius.ui.channel
+          options:
+            fields: [order.channel]
+          form_options:
+            class: "%sylius.model.channel.class%"
+        enabled:
+          type: boolean
+          label: arobases_sylius_customer_support.ui.open
       actions:
         item:
           update:
@@ -51,7 +91,6 @@ sylius_grid:
             type: delete
           close_ticket:
             type: close_ticket_admin
-            label: arobases_sylius_customer_support.ui.close_ticket
             icon: 'cart plus'
     arobases_shop_customer_support:
       driver:
@@ -63,12 +102,13 @@ sylius_grid:
       fields:
         enabled:
           type: twig
-          label: sylius.ui.enabled
+          label: arobases_sylius_customer_support.ui.open
           path: .
           options:
             template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/enabled.html.twig"
         date_updated_at:
           type: datetime
+          sortable: updatedAt
           label: arobases_sylius_customer_support.ui.updated_at
           path: updatedAt
           options:
@@ -83,9 +123,30 @@ sylius_grid:
           type: twig
           label: arobases_sylius_customer_support.ui.order_number
           path: order
-          sortable: ~
           options:
             template: "@ArobasesSyliusCustomerSupportPlugin/Admin/Field/number.html.twig"
+
+      filters:
+        number:
+          type: string
+          label: sylius.ui.number
+          options:
+            fields: [order.number]
+        date_updated_at:
+          type: date
+          label: arobases_sylius_customer_support.ui.updated_at
+          options:
+            field: updatedAt
+            inclusive_to: true
+        date_created_at:
+          type: date
+          label: arobases_sylius_customer_support.ui.created_at
+          options:
+            field: createdAt
+            inclusive_to: true
+        enabled:
+          type: boolean
+          label: arobases_sylius_customer_support.ui.open
       actions:
         item:
           show:
@@ -96,12 +157,8 @@ sylius_grid:
                 route: arobases_sylius_customer_support_plugin_shop_customer_support_update
                 parameters:
                   id: resource.id
-#          pay:
-#            type: shop_pay
-#            label: sylius.ui.pay
-#            options:
-#              link:
-#                route: sylius_shop_order_show
-#                parameters:
-#                  tokenValue: resource.tokenValue
+          close_ticket:
+            type: close_ticket_shop
+            icon: 'cart plus'
+
 

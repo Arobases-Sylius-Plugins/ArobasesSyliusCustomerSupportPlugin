@@ -8,7 +8,6 @@ arobases_sylius_customer_support_plugin_shop_account_customer_support_index:
       template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/index.html.twig"
       grid: arobases_shop_customer_support
 
-
 arobases_sylius_customer_support_plugin_shop_account_customer_support_show:
   path: /account/customer_support/{id}
   methods: [GET]
@@ -22,7 +21,6 @@ arobases_sylius_customer_support_plugin_shop_account_customer_support_show:
         arguments:
           - $id
 
-
 arobases_sylius_customer_support_plugin_shop_customer_support_update:
   path: /customer_support/{id}/update
   methods: [GET, PUT, POST]
@@ -32,9 +30,10 @@ arobases_sylius_customer_support_plugin_shop_customer_support_update:
       template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/form.html.twig"
       form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportType
       repository:
-        method: find
+        method: findOneByIdAndCustomer
         arguments:
           - $id
+          - "expr:service('sylius.context.customer').getCustomer()"
       redirect:
         route: arobases_sylius_customer_support_plugin_shop_customer_support_update
       flash: arobases_sylius_customer_support.account.add_response
@@ -51,3 +50,11 @@ arobases_sylius_customer_support_plugin_shop_customer_support_create:
       redirect:
         route: arobases_sylius_customer_support_plugin_shop_customer_support_update
       flash: arobases_sylius_customer_support.account.create_ticket
+
+arobases_sylius_customer_support_shop_customer_support_change_status:
+  path: /customer_support/{id}/changeStatus
+  methods: [PATCH]
+  defaults:
+    _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:changeStatus
+    _sylius:
+      redirect:  arobases_sylius_customer_support_plugin_shop_account_customer_support_index
