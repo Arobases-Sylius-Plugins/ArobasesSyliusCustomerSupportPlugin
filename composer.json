@@ -1,5 +1,5 @@
 {
-    "name": "arobases/sylius-customer-support-plugin",
+    "name": "arobases-sylius-public/sylius-customer-support-plugin",
     "type": "sylius-plugin",
     "description": "Plugin allowing to users to open tickets for their orders and the administrator can manage and respond to them in the back office on Sylius",
     "keywords": [
