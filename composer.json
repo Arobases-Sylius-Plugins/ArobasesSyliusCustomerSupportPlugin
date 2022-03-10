@@ -4,7 +4,8 @@
     "description": "Plugin allowing to users to open tickets for their orders and the administrator can manage and respond to them in the back office on Sylius",
     "keywords": [
         "sylius",
-        "sylius-plugin"
+        "sylius-plugin",
+        "arobases-sylius-plugin"
     ],
     "minimum-stability": "dev",
     "license": "MIT",
