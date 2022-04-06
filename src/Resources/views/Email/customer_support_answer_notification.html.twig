@@ -1,0 +1,38 @@
+{% extends '@SyliusShop/Email/layout.html.twig' %}
+
+{% block subject %} {{ 'arobases_sylius_customer_support_plugin.email.new_answer_on'|trans({}, null, localeCode) }} {{ channel.hostname }}{% endblock %}
+
+{% block content %}
+    <div style="font-size: 14px;font-family: Arial;">
+        <style> .ii span a[href] {color: #fff!important;}</style>
+        <span>{{'arobases_sylius_customer_support_plugin.email.hello' |trans({}, null, localeCode) }} </span>
+        <br>
+        <span>{{'arobases_sylius_customer_support_plugin.email.new_answer' |trans({}, null, localeCode)}}
+            {% if customerSupportAnswer.author == "admin" %}
+                {{ channel.name }}
+            {% else %}
+                {{ customerSupportAnswer.author }}
+            {% endif %}
+        </span>
+
+        <br>
+        <blockquote class="blockquote mb-0">
+            {% if customerSupportAnswer.filePath is not null %}#}
+                <a href="https://{{ channel.hostname }}{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support_plugin.ui.attachment'|trans({}, null, localeCode) }}</a>
+            {% endif %}
+            <p>{{ customerSupportAnswer.message }}</p>
+            <footer class="blockquote-footer">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</footer>
+        </blockquote>
+
+        <br>
+        <span>
+            {% if customerSupportAnswer.author == "admin" %}
+                <a href="https://{{ channel.hostname }}{{ path('arobases_sylius_customer_support_plugin_shop_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
+            {% else %}
+                <a href="https://{{ channel.hostname }}{{ path('arobases_sylius_customer_support_plugin_admin_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
+            {% endif %}
+        </span>
+    </div>
+
+
+{% endblock %}

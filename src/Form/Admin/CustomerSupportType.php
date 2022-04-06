@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\Form\Admin;
 
+use Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManager;
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport;
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer;
 use Arobases\SyliusCustomerSupportPlugin\Files\Uploader\CustomerSupportAnswerUploader;
+use Sylius\Component\Core\Model\Channel;
+use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -15,11 +18,16 @@ use Symfony\Component\Form\FormEvents;
 final class CustomerSupportType extends AbstractType
 {
     private CustomerSupportAnswerUploader $customerSupportAnswerUploader;
+    private SendNotificationAnswerEmailManager $sendNotificationAnswerEmailManager;
 
-    public function __construct(CustomerSupportAnswerUploader $customerSupportAnswerUploader)
+
+    public function __construct(CustomerSupportAnswerUploader $customerSupportAnswerUploader, SendNotificationAnswerEmailManager $sendNotificationAnswerEmailManager)
     {
         $this->customerSupportAnswerUploader = $customerSupportAnswerUploader;
+        $this->sendNotificationAnswerEmailManager = $sendNotificationAnswerEmailManager;
     }
+
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -51,7 +59,11 @@ final class CustomerSupportType extends AbstractType
         }
 
         $data->addCustomerSupportAnswer($customerSupportAnswer);
+        $mailCustomer = $data->getCustomer()->getEmail();
+        if($mailCustomer !== null){
+            $this->sendNotificationAnswerEmailManager->sendNotificationAnswer($mailCustomer, $customerSupportAnswer, $data->getOrder()->getChannel() );
 
+        }
 
     }
     public function getBlockPrefix(): string

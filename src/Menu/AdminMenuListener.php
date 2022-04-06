@@ -11,9 +11,6 @@ final class AdminMenuListener
         $menu = $event->getMenu();
         $menu->getChild('sales')->addChild('customer_support',[
             'route' => 'arobases_sylius_customer_support_plugin_admin_customer_support_index'
-        ])->setLabel('arobases_sylius_customer_support.menu.admin.customer_support')->setLabelAttribute('icon', 'users');
-
-
-
+        ])->setLabel('arobases_sylius_customer_support_plugin.menu.admin.customer_support')->setLabelAttribute('icon', 'users');
     }
 }

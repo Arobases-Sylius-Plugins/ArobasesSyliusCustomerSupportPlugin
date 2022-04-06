@@ -1,0 +1,5 @@
+sylius_mailer:
+  emails:
+    arobases_sylius_customer_support_plugin_answer_notification:
+      subject: "New answer"
+      template: "@ArobasesSyliusCustomerSupportPlugin/Email/customer_support_answer_notification.html.twig"

@@ -1,4 +1,4 @@
-arobases_sylius_customer_support:
+arobases_sylius_customer_support_plugin:
   account:
     add_response: Your answer has been added
     create_ticket: Your ticket has been created

@@ -1,9 +1,7 @@
-arobases_sylius_customer_support:
-  form:
-    to_respond: To respond
-    to_create: Créer
+arobases_sylius_customer_support_plugin:
   ui:
-    edit_customer_support:
+    edit_customer_support: Modification of a ticket
+    customer_supports: List of tickets
     new_message: new message
     updated_at: Date last update
     created_at: Date creation
@@ -16,14 +14,17 @@ arobases_sylius_customer_support:
     client: Client
     attachment: Attachment
     open: Open
+  form:
+    to_respond: To respond
+    to_create: Créer
   menu:
     admin:
       customer_support: Customer support
     shop:
       account:
         customer_support: Customer support
-
-arobases_sylius_customer_support_plugin:
-  ui:
-    edit_customer_support: Modification of a ticket
-    customer_supports: List of tickets
+  email:
+    hello: Hello
+    new_answer: You have received a new message from
+    new_answer_on: Vous avez reçu un nouveau message sur
+    you_can_answer_here: You can answer here

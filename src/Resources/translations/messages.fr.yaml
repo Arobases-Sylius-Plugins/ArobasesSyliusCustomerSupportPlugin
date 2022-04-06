@@ -1,4 +1,4 @@
-arobases_sylius_customer_support:
+arobases_sylius_customer_support_plugin:
     form:
         to_respond: Répondre
         to_create: Créer
@@ -17,13 +17,16 @@ arobases_sylius_customer_support:
         close_ticket: Fermer le ticket
         attachment: Pièce jointe
         open: Ouvert
+        edit_customer_support: Modification d'un SAV
+        customer_supports: Liste des Services après vente
     menu:
         admin:
             customer_support: Service après vente
         shop:
             account:
                 customer_support: Service après vente
-arobases_sylius_customer_support_plugin:
-    ui:
-        edit_customer_support: Modification d'un SAV
-        customer_supports: Liste des Services après vente
+    email:
+        hello: Bonjour
+        new_answer: Vous avez reçu un nouveau message de
+        new_answer_on: Vous avez reçu un nouveau message sur
+        you_can_answer_here: Vous pouvez répondre ici
