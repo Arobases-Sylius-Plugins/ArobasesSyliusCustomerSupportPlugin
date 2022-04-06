@@ -24,6 +24,8 @@ services:
       - { name: form.type}
     arguments:
       - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
+      - '@arobases_sylius_customer_support_plugin.email_manager.send_notification_answer_email_manager'
+
 
   arobases.form.type.shop.customer_support_create:
     class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
@@ -38,6 +40,7 @@ services:
       - { name: form.type}
     arguments:
       - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
+      - '@arobases_sylius_customer_support_plugin.email_manager.send_notification_answer_email_manager'
 
 
   Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:
@@ -60,4 +63,8 @@ services:
       - '%kernel.project_dir%/public/'
       - 'media/image/'
 
-
+  arobases_sylius_customer_support_plugin.email_manager.send_notification_answer_email_manager:
+    class:  Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManager
+    arguments:
+      - '@sylius.email_sender'
+      - '@sylius.context.locale'

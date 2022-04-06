@@ -4,12 +4,12 @@
     {% if data.enabled == 1 %}
         <button class="ui blue icon button" type="submit" data-requires-confirmation>
             <i class="thumbs up outline icon"></i>
-            {{ action.label|default('arobases_sylius_customer_support.ui.close_ticket')|trans }}
+            {{ action.label|default('arobases_sylius_customer_support_plugin.ui.close_ticket')|trans }}
         </button>
     {% else %}
         <button class="ui blue icon button" type="submit" data-requires-confirmation>
             <i class="thumbs up outline icon"></i> 
-            {{ action.label|default('arobases_sylius_customer_support.ui.open_ticket')|trans }}
+            {{ action.label|default('arobases_sylius_customer_support_plugin.ui.open_ticket')|trans }}
         </button>
     {% endif %}
 

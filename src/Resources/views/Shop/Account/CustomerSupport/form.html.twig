@@ -1,6 +1,6 @@
 {% extends '@SyliusShop/Account/layout.html.twig' %}
 
-{% block title %}{{ 'arobases_sylius_customer_support.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
+{% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
 
 
 {% block subcontent %}
@@ -12,14 +12,14 @@
         {% for customerSupportAnswer in resource.customerSupportAnswers %}
             <div class="comment">
                 <div class="content">
-                    <span class="author">{% if customerSupportAnswer.author == 'admin' %} {{  sylius.channel.name }} {% else %}  ({{'arobases_sylius_customer_support.ui.you'|trans }}) - {{ customerSupportAnswer.author }} {% endif %}</span>
+                    <span class="author">{% if customerSupportAnswer.author == 'admin' %} {{  sylius.channel.name }} {% else %}  ({{'arobases_sylius_customer_support_plugin.ui.you'|trans }}) - {{ customerSupportAnswer.author }} {% endif %}</span>
                     <div class="metadata">
                         <span class="date">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
                     </div>
 
                     <div class="text">
                         {% if customerSupportAnswer.filePath is not null %}
-                            <a href=" /{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support.ui.attachment'|trans }}</a>
+                            <a href=" /{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support_plugin.ui.attachment'|trans }}</a>
                         {% endif %}
                         <p>{{ customerSupportAnswer.message }}</p>
                     </div>
@@ -33,7 +33,7 @@
         {{ form_row(form.customerSupportAnswers.message) }}
         <div class="ui hidden divider"></div>
         <div class="ui buttons">
-            <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support.form.to_respond'|trans }}</button>
+            <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support_plugin.form.to_respond'|trans }}</button>
         </div>
     {% endif %}
     {{ form_row(form._token) }}

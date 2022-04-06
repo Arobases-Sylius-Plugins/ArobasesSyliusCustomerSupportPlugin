@@ -5,13 +5,13 @@
 {% for customerSupportAnswer in resource.customerSupportAnswers %}
         <div class="comment">
             <div class="content">
-                <span class="author">{% if customerSupportAnswer.author == resource.customer.fullname %} ({{'arobases_sylius_customer_support.ui.client'|trans }}) - {{ resource.customer.fullname }}  {% else %}  {{'arobases_sylius_customer_support.ui.you'|trans }}  {% endif %}</span>
+                <span class="author">{% if customerSupportAnswer.author == resource.customer.fullname %} ({{'arobases_sylius_customer_support_plugin.ui.client'|trans }}) - {{ resource.customer.fullname }}  {% else %}  {{'arobases_sylius_customer_support_plugin.ui.you'|trans }}  {% endif %}</span>
                 <div class="metadata">
                      <span class="date">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
                 </div>
                 <div class="text">
                     {% if customerSupportAnswer.filePath is not null %}
-                        <a href=" /{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support.ui.attachment'|trans }}</a>
+                        <a href=" /{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support_plugin.ui.attachment'|trans }}</a>
                     {% endif %}
                     <p>{{ customerSupportAnswer.message }}</p>
                 </div>

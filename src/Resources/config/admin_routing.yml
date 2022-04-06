@@ -10,23 +10,6 @@ arobases_sylius_customer_support_plugin_admin_customer_support_index:
 
 
 
-
-#
-#arobases_sylius_customer_support_admin_create:
-#  path: /customer_support/create
-#  methods: [GET,POST]
-#  defaults:
-#    _controller: app.controller.partner::createAction
-#    _sylius:
-#      permission: true
-#      section: admin
-#      redirect: app_admin_partner_index
-#      vars:
-#        templates:
-#          form: '@SyliusAdmin/Partner/form.html.twig'
-#
-
-
 arobases_sylius_customer_support_plugin_admin_customer_support_update:
   path: /admin/customer_support/{id}/update
   methods: [GET,PUT]

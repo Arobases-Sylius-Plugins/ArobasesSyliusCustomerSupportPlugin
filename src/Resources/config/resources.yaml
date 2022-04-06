@@ -18,4 +18,5 @@ sylius_resource:
 
 imports:
     - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/grids.yaml" }
+    - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/sylius_mailer.yaml" }
     - { resource: config.yaml }

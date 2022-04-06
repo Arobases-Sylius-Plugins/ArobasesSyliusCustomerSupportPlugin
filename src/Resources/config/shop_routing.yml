@@ -36,7 +36,7 @@ arobases_sylius_customer_support_plugin_shop_customer_support_update:
           - "expr:service('sylius.context.customer').getCustomer()"
       redirect:
         route: arobases_sylius_customer_support_plugin_shop_customer_support_update
-      flash: arobases_sylius_customer_support.account.add_response
+      flash: arobases_sylius_customer_support_plugin.account.add_response
 
 arobases_sylius_customer_support_plugin_shop_customer_support_create:
   path: /customer_support/add
@@ -49,7 +49,7 @@ arobases_sylius_customer_support_plugin_shop_customer_support_create:
       form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
       redirect:
         route: arobases_sylius_customer_support_plugin_shop_customer_support_update
-      flash: arobases_sylius_customer_support.account.create_ticket
+      flash: arobases_sylius_customer_support_pluigin.account.create_ticket
 
 arobases_sylius_customer_support_shop_customer_support_change_status:
   path: /customer_support/{id}/changeStatus
