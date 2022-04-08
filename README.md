@@ -24,7 +24,6 @@ imports:
 - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/resources.yaml" }
 ```
 
-
 ### Copy routes
 
 Create file `config/routes/arobases_sylius_customer_support.yaml` with this content
