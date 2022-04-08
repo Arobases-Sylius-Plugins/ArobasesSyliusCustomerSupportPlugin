@@ -7,7 +7,7 @@ namespace Arobases\SyliusCustomerSupportPlugin\Repository;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\CustomerInterface;
 
-final class CustomerSupportRepository extends EntityRepository
+class CustomerSupportRepository extends EntityRepository
 {
     public function findOneByIdAndCustomer(string $id, CustomerInterface $customer)
     {
