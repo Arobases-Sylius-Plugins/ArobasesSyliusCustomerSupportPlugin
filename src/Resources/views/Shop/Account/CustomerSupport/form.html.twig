@@ -1,4 +1,5 @@
 {% extends '@SyliusShop/Account/layout.html.twig' %}
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
 
 {% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
 
@@ -7,7 +8,7 @@
     {{'sylius.ui.order'|trans }} #{{ resource.order.number }}
     </br>
     {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_update', {'id': resource.id}),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
-
+    {{ form_errors(form) }}
     <div class="ui comments">
         {% for customerSupportAnswer in resource.customerSupportAnswers %}
             <div class="comment">

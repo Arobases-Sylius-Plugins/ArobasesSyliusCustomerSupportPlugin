@@ -1,17 +1,19 @@
 {% extends '@SyliusShop/Account/layout.html.twig' %}
-
-{% block title %}{{ 'arobases_sylius_customer_support.ui.new_ticket'|trans }}  | {{ parent() }}{% endblock %}
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+{% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.new_ticket'|trans }}  | {{ parent() }}{% endblock %}
 
 {% block subcontent %}
 
     {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_create'),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+
+    {{ form_errors(form) }}
     {{ form_row(form.order) }}
     {{ form_row(form.customerSupportAnswers.file) }}
     {{ form_row(form.customerSupportAnswers.message) }}
 
     <div class="ui hidden divider"></div>
     <div class="ui buttons">
-        <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support.form.to_create'|trans }}</button>
+        <button class="ui labeled icon primary button" type="submit" id="sylius_save_changes_button"><i class="save icon"></i> {{ 'arobases_sylius_customer_support_plugin.form.to_create'|trans }}</button>
     </div>
 
     {{ form_row(form._token) }}
