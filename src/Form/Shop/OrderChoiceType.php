@@ -13,8 +13,6 @@ declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\Form\Shop;
 
-use Sylius\Bundle\ApiBundle\Context\UserContextInterface;
-use Sylius\Component\Core\Repository\AddressRepositoryInterface;
 use Sylius\Component\Core\Repository\OrderRepositoryInterface;
 use Sylius\Component\Customer\Context\CustomerContextInterface;
 use Symfony\Component\Form\AbstractType;
@@ -24,7 +22,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class OrderChoiceType extends AbstractType
 {
-
     private OrderRepositoryInterface $orderRepository;
     private CustomerContextInterface $customerContext;
 
@@ -34,10 +31,8 @@ final class OrderChoiceType extends AbstractType
         $this->customerContext = $customerContext;
     }
 
-
     public function configureOptions(OptionsResolver $resolver): void
     {
-
         $resolver->setDefaults([
             'choices' => function (Options $options): array {
                 return $this->orderRepository->findByCustomer($this->customerContext->getCustomer());

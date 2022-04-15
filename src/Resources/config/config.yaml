@@ -41,7 +41,6 @@ sylius_ui:
             template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/Index/_subcontent.html.twig"
             priority: 10
 
-
       arobases_sylius_customer_support.account.customer_support.show.subcontent:
         blocks:
           header:

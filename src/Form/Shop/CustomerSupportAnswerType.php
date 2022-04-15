@@ -24,11 +24,9 @@ final class CustomerSupportAnswerType extends AbstractType
                 'required' => false,
                 'label' => false
             ]);
-
     }
     public function getBlockPrefix(): string
     {
         return 'arobases_customer_support_answer';
     }
-
 }

@@ -1,0 +1,6 @@
+arobases_sylius_customer_support_plugin:
+  form:
+    message:
+      not_blank: You must enter a message
+    order:
+      not_blank: You must select an order
