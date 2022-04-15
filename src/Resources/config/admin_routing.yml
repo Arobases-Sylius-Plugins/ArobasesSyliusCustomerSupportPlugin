@@ -38,7 +38,7 @@ arobases_sylius_customer_support_plugin_admin_customer_support_delete:
       section: admin
       redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index
 
-arobases_sylius_customer_support_admin_customer_support_change_status:
+arobases_sylius_customer_support_plugin_admin_customer_support_change_status:
   path: /admin/customer_support/{id}/changeStatus
   methods: [PATCH]
   defaults:
