@@ -51,7 +51,7 @@ arobases_sylius_customer_support_plugin_shop_customer_support_create:
         route: arobases_sylius_customer_support_plugin_shop_customer_support_update
       flash: arobases_sylius_customer_support_pluigin.account.create_ticket
 
-arobases_sylius_customer_support_shop_customer_support_change_status:
+arobases_sylius_customer_support_plugin_shop_customer_support_change_status:
   path: /customer_support/{id}/changeStatus
   methods: [PATCH]
   defaults:
