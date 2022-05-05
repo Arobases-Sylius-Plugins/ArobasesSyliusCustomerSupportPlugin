@@ -17,7 +17,7 @@
 
         <br>
         <blockquote class="blockquote mb-0">
-            {% if customerSupportAnswer.filePath is not null %}#}
+            {% if customerSupportAnswer.filePath is not null %}
                 <a href="https://{{ channel.hostname }}{{ customerSupportAnswer.filePath }}" target="_blank"> {{'arobases_sylius_customer_support_plugin.ui.attachment'|trans({}, null, localeCode) }}</a>
             {% endif %}
             <p>{{ customerSupportAnswer.message }}</p>
