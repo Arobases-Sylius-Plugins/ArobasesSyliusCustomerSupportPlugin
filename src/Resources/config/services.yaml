@@ -24,7 +24,7 @@ services:
       - { name: form.type}
     arguments:
       - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
-      - '@translator.data_collector'
+      - '@translator'
 
   arobases.form.type.shop.customer_support_create:
     class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
@@ -32,7 +32,7 @@ services:
       - { name: form.type}
     arguments:
       - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
-      - '@translator.data_collector'
+      - '@translator'
 
   arobases.form.type.admin.customer_support:
     class: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
@@ -40,7 +40,7 @@ services:
       - { name: form.type}
     arguments:
       - '@arobases_sylius_customer_support_plugin.uploader.customer_support_answer'
-      - '@translator.data_collector'
+      - '@translator'
 
   Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController:
     tags: ['controller.service_arguments']
