@@ -27,9 +27,9 @@
         <br>
         <span>
             {% if customerSupportAnswer.author == "admin" %}
-                <a href="https://{{ channel.hostname }}/{{ path('arobases_sylius_customer_support_plugin_shop_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
+                <a href="https://{{ channel.hostname }}{{ path('arobases_sylius_customer_support_plugin_shop_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
             {% else %}
-                <a href="https://{{ channel.hostname }}/{{ path('arobases_sylius_customer_support_plugin_admin_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
+                <a href="https://{{ channel.hostname }}{{ path('arobases_sylius_customer_support_plugin_admin_customer_support_update', { id : customerSupportAnswer.customerSupport.id }) }}" target="_blank">{{'arobases_sylius_customer_support_plugin.email.you_can_answer_here' |trans}} </a>
             {% endif %}
         </span>
     </div>
