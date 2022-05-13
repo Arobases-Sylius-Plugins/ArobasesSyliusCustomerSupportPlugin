@@ -6,6 +6,7 @@ namespace Arobases\SyliusCustomerSupportPlugin\Repository;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Sylius\Component\Core\Model\CustomerInterface;
+use Doctrine\ORM\QueryBuilder;
 
 class CustomerSupportRepository extends EntityRepository
 {
