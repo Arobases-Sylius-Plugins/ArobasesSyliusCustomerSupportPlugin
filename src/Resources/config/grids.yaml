@@ -97,6 +97,10 @@ sylius_grid:
         name: doctrine/orm
         options:
           class: '%arobases_sylius_customer_support_plugin.model.customer_support.class%'
+          repository:
+              method: createByCustomerIdQueryBuilder
+              arguments:
+                  - "expr:service('sylius.context.customer').getCustomer().getId()"
       sorting:
         date_updated_at: desc
       fields:
