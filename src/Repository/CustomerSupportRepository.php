@@ -9,6 +9,16 @@ use Sylius\Component\Core\Model\CustomerInterface;
 
 class CustomerSupportRepository extends EntityRepository
 {
+    
+    public function createByCustomerIdQueryBuilder($customerId): QueryBuilder
+    {
+        return $this->createQueryBuilder('customer_support')
+            ->andWhere('customer_support.customer = :customerId')
+            ->setParameter('customerId', $customerId)
+
+            ;
+    }
+    
     public function findOneByIdAndCustomer(string $id, CustomerInterface $customer)
     {
         return $this->createQueryBuilder('customer_support')
