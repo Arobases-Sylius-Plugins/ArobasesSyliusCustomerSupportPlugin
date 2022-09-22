@@ -8,7 +8,6 @@ use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport;
 use Arobases\SyliusCustomerSupportPlugin\Repository\CustomerSupportRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use Setono\SyliusMailchimpPlugin\Repository\OrderRepositoryInterface;
 use SM\Factory\FactoryInterface;
 use Sylius\Component\Order\OrderTransitions;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
