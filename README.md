@@ -1,14 +1,9 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
-
 <h1 align="center">Arobases Sylius Customer support plugin</h1>
 
-<p align="center">Skeleton for starting Sylius plugins.</p>
+![banner_arobases](https://user-images.githubusercontent.com/39689570/219095474-12063079-528f-4be8-b006-debff3185920.jpg)
 
-## Install from an another projet
+
+## Install
 
 ### Composer
 
@@ -17,7 +12,7 @@
   ```
 ### Copy resource
 
-Create file `config/packages/arobases_sylius_customer_support.yaml` with this content
+Create file `config/packages/arobases_sylius_customer_support_plugin.yaml` with this content
 
 ```
 imports:
@@ -26,12 +21,12 @@ imports:
 
 ### Copy routes
 
-Create file `config/routes/arobases_sylius_customer_support.yaml` with this content
+Create file `config/routes/arobases_sylius_customer_support_plugin.yaml` with this content
 ```
 arobases_sylius_customer_support_plugin_admin:
     resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/admin_routing.yml"
 
-arobases_customer_support:
+arobases_customer_support_plugin:
     resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/shop_routing.yml"
  ```
 
