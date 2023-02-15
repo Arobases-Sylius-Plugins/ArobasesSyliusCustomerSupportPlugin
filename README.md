@@ -4,7 +4,7 @@
     </a>
 </p>
 
-<h1 align="center">Plugin Skeleton</h1>
+<h1 align="center">Arobases Sylius Customer support plugin</h1>
 
 <p align="center">Skeleton for starting Sylius plugins.</p>
 
