@@ -14,9 +14,11 @@ arobases_sylius_customer_support_plugin:
     client: Client
     attachment: Attachment
     open: Open
+    close_ticket: Close ticket
+    open_ticket: Open ticket
   form:
-    to_respond: To respond
-    to_create: Créer
+    to_respond: Reply
+    to_create: Create
   menu:
     admin:
       customer_support: Customer support

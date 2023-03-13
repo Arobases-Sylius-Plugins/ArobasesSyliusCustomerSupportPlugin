@@ -57,7 +57,6 @@ final class CustomerSupportType extends AbstractType
         $customerSupportAnswer->setMessage($message);
         $customerSupportAnswer->setCustomerSupport($data);
         $customerSupportAnswer->setAuthor($data->getOrder()->getCustomer()->getFullName());
-
         if ($file !== null) {
             $pathFile = $this->customerSupportAnswerUploader->upload($file);
             $customerSupportAnswer->setFilePath($pathFile);
@@ -67,6 +66,6 @@ final class CustomerSupportType extends AbstractType
     }
     public function getBlockPrefix(): string
     {
-        return 'arobases_customer_support';
+        return 'arobases_customer_support_plugin';
     }
 }

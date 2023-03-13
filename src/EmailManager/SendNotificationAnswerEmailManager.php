@@ -32,13 +32,10 @@ final class SendNotificationAnswerEmailManager
     }
 
 
-    public function sendNotificationAnswer(string $email, CustomerSupportAnswer $customerSupportAnswer, ChannelInterface $channel ): void
+    public function sendNotificationAnswer(string $email, CustomerSupportAnswer $customerSupportAnswer, ChannelInterface $channel): void
     {
         $localeCode = $this->localeContext->getLocaleCode();
-
         $this->emailSender->send('arobases_sylius_customer_support_plugin_answer_notification', [$email], [ 'localeCode' => $localeCode, 'customerSupportAnswer' => $customerSupportAnswer, 'channel' => $channel ]);
-
-
     }
 
 }

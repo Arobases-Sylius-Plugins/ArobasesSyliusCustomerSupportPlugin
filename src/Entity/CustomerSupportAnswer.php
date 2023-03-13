@@ -7,7 +7,6 @@ namespace Arobases\SyliusCustomerSupportPlugin\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\ToggleableTrait;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
@@ -35,7 +34,7 @@ class CustomerSupportAnswer implements ResourceInterface
     protected ?CustomerSupport $customerSupport = null;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     protected string $message;
 

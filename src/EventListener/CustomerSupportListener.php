@@ -35,6 +35,7 @@ final class CustomerSupportListener
     public function postCreate(ResourceControllerEvent $event){
         $customerSupportAnswer = $event->getSubject()->getCustomerSupportAnswers()->last();
         $mailChannel = $event->getSubject()->getOrder()->getChannel()->getContactEmail();
+
         if($mailChannel !== null){
             $this->sendEmail($mailChannel, $customerSupportAnswer,  $event->getSubject()->getOrder()->getChannel());
         }
