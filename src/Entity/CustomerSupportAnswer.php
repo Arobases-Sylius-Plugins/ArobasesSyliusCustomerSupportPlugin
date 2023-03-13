@@ -35,7 +35,7 @@ class CustomerSupportAnswer implements ResourceInterface
     protected ?CustomerSupport $customerSupport = null;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected string $message;
 
