@@ -13,9 +13,7 @@
         "php": "^7.4 || ^8.0",
         "sylius/sylius": "^1.8"
     },
-    "conflict": {
-        "api-platform/core": "^2.6"
-    },
+
     "require-dev": {
         "behat/behat": "^3.6.1",
         "behat/mink-selenium2-driver": "^1.4",
