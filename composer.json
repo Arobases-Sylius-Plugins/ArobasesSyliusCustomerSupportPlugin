@@ -10,7 +10,7 @@
     "minimum-stability": "dev",
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "sylius/sylius": "^1.8"
     },
     "conflict": {
