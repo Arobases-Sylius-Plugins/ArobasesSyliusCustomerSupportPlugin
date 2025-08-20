@@ -46,7 +46,7 @@ services:
     tags: ['controller.service_arguments']
     arguments:
       - '@arobases_sylius_customer_support_plugin.repository.customer_support'
-      - '@Symfony\Component\Routing\RouterInterface'
+      - '@router'
       - '@doctrine.orm.default_entity_manager'
 
   arobases_sylius_customer_support_plugin.provider.file_name_provider:

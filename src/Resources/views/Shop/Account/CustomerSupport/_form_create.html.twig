@@ -1,9 +1,12 @@
 {% extends '@SyliusShop/Account/layout.html.twig' %}
+{% import '@SyliusShop/Macro/messages.html.twig' as messages %}
+
 {% form_theme form '@SyliusShop/Form/theme.html.twig' %}
 {% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.new_ticket'|trans }}  | {{ parent() }}{% endblock %}
 
 {% block subcontent %}
-
+    {% dump(sylius.customer.orders|length ) %}
+    {% if sylius.customer.orders|length > 0 %}
     {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_create'),'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
 
     {{ form_errors(form) }}
@@ -18,6 +21,10 @@
 
     {{ form_row(form._token) }}
     {{ form_end(form, {'render_rest': false}) }}
+    {% else %}
+        {{ messages.info('arobases_sylius_customer_support_plugin.ui.no_orders') }}
+
+    {% endif %}
 
 {% endblock %}
 

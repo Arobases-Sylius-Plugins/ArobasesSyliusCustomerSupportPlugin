@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace Arobases\SyliusCustomerSupportPlugin\Controller;
 
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport;
-use Arobases\SyliusCustomerSupportPlugin\Repository\CustomerSupportRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use SM\Factory\FactoryInterface;
-use Sylius\Component\Order\OrderTransitions;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +35,6 @@ final class ChangeStatusCustomerSupportController
         }else{
             $customerSupport->setEnabled(true);
         }
-        $this->manager->persist($customerSupport);
         $this->manager->flush();
         $redirectRoute = $this->getSyliusAttribute($request, 'redirect', 'referer');
         return new RedirectResponse($this->router->generate($redirectRoute));

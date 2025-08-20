@@ -11,8 +11,7 @@ sylius_shop_default_locale:
     path: /
     methods: [GET]
     defaults:
-        _controller: sylius.controller.shop.locale_switch:switchAction
+        _controller: sylius.controller.shop.locale_switch::switchAction
 
-
-arobases_customer_support:
+arobases_customer_support_plugin:
     resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/shop_routing.yml"

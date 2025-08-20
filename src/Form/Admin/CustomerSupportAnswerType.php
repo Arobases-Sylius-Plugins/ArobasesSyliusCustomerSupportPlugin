@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\Form\Admin;
 
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 
 final class CustomerSupportAnswerType extends AbstractType
 {
@@ -16,11 +16,22 @@ final class CustomerSupportAnswerType extends AbstractType
     {
           $builder
               ->add('message', TextType::class, [
-            'label' => false
+                'label' => false
               ])
               ->add('file', FileType::class, [
                   'required' => false,
-                  'label' => false
+                  'label' => false,
+                  'constraints' => [
+                      new File([
+                          'maxSize' => '10M',
+                          'mimeTypes' => [
+                              'application/pdf',
+                              'image/png',
+                              'image/jpeg',
+                          ],
+                          'mimeTypesMessage' => 'arobases_sylius_customer_support_plugin.form.file.invalid_type',
+                      ])
+                  ],
               ]);
     }
     public function getBlockPrefix(): string

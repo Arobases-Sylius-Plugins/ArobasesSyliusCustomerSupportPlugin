@@ -1,0 +1,9 @@
+#acme_sylius_example_shop:
+#    resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/shop_routing.yml"
+#    prefix: /{_locale}
+#    requirements:
+#        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
+#
+#arobases_sylius_customer_support_plugin_admin:
+#    resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/admin_routing.yml"
+#    prefix: /admin

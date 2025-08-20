@@ -50,6 +50,6 @@ final class OrderChoiceType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'sylius_address_choice';
+        return 'arobases_customer_support_order_choice';
     }
 }

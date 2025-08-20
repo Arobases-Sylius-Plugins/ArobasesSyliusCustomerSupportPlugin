@@ -4,3 +4,5 @@ arobases_sylius_customer_support_plugin:
       not_blank: You must enter a message
     order:
       not_blank: You must select an order
+    file:
+      invalid_type: "Please upload a valid PDF, PNG or JPEG file."

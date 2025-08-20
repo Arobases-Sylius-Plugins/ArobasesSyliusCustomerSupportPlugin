@@ -9,7 +9,7 @@ use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\ChannelInterface;
 
-final class CustomerSupportListener
+final class CustomerSupportListener implements CustomerSupportListenerInterface
 {
     private SendNotificationAnswerEmailManager $sendNotificationAnswerEmailManager;
 
@@ -18,7 +18,8 @@ final class CustomerSupportListener
         $this->sendNotificationAnswerEmailManager = $sendNotificationAnswerEmailManager;
     }
 
-    public function postUpdate(ResourceControllerEvent $event){
+    public function postUpdate(ResourceControllerEvent $event) :void
+    {
         $customerSupportAnswer = $event->getSubject()->getCustomerSupportAnswers()->last();
         if($customerSupportAnswer->getAuthor() === "admin" ) {
             $mailCustomer = $event->getSubject()->getCustomer()->getEmail();
@@ -32,7 +33,8 @@ final class CustomerSupportListener
             }
         }
     }
-    public function postCreate(ResourceControllerEvent $event){
+    public function postCreate(ResourceControllerEvent $event) :void
+    {
         $customerSupportAnswer = $event->getSubject()->getCustomerSupportAnswers()->last();
         $mailChannel = $event->getSubject()->getOrder()->getChannel()->getContactEmail();
 
@@ -41,7 +43,8 @@ final class CustomerSupportListener
         }
     }
 
-    protected function sendEmail(string $email, CustomerSupportAnswer $customerSupportAnswer, ChannelInterface $channel){
+    protected function sendEmail(string $email, CustomerSupportAnswer $customerSupportAnswer, ChannelInterface $channel) :void
+    {
         $this->sendNotificationAnswerEmailManager->sendNotificationAnswer($email, $customerSupportAnswer, $channel);
     }
 }
