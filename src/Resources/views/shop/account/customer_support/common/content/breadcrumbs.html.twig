@@ -1,0 +1,20 @@
+{% from '@SyliusShop/shared/breadcrumbs.html.twig' import breadcrumbs as breadcrumbs %}
+
+{% set resource = hookable_metadata.context.resource|default(null) %}
+{% set items = [
+    { label: 'sylius.ui.home'|trans, path: path('sylius_shop_homepage') },
+    { label: 'sylius.ui.my_account'|trans, path: path('sylius_shop_account_dashboard') },
+] %}
+
+{% if resource is null and hookable_metadata.context.resources is defined %}
+    {% set items = items|merge([{ label: 'arobases_sylius_customer_support_plugin.menu.shop.account.customer_support'|trans, active: true }]) %}
+{% else %}
+    {% set items = items|merge([
+        { label: 'arobases_sylius_customer_support_plugin.menu.shop.account.customer_support'|trans, path: path('arobases_sylius_customer_support_plugin_shop_account_customer_support_index') },
+        { label: resource is not null and resource.id is not null ? 'arobases_sylius_customer_support_plugin.ui.ticket'|trans ~ ' ' ~ resource.id : 'arobases_sylius_customer_support_plugin.ui.new_ticket'|trans, active: true },
+    ]) %}
+{% endif %}
+
+<div class="col-12">
+    {{ breadcrumbs(items) }}
+</div>

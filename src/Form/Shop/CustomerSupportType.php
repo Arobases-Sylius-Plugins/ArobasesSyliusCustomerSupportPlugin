@@ -31,7 +31,7 @@ final class CustomerSupportType extends AbstractType
 
             ->add('customerSupportAnswers', CustomerSupportAnswerType::class, [
                 'mapped' => false,
-                'label' => 'arobases_sylius_customer_support.ui.new_message',
+                'label' => 'arobases_sylius_customer_support_plugin.ui.new_message',
                 'required' => false,
             ])
             ->addEventListener(FormEvents::POST_SUBMIT, [$this, 'onPostSubmit']);

@@ -1,0 +1,11 @@
+{% import '@SyliusAdmin/shared/helper/button.html.twig' as button %}
+
+{% if hookable_metadata.context.resource.enabled %}
+    {{ button.primary(
+        sylius_test_form_attribute('update-changes-button')|merge({
+            text: 'arobases_sylius_customer_support_plugin.form.to_respond'|trans,
+            type: 'submit',
+            form: hookable_metadata.context.form.vars.id|default(null)
+        })
+    ) }}
+{% endif %}

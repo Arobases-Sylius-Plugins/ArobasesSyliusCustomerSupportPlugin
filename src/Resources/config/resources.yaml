@@ -6,18 +6,14 @@ sylius_resource:
                 model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport
                 form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportType
                 repository: Arobases\SyliusCustomerSupportPlugin\Repository\CustomerSupportRepository
-            templates: '@SyliusAdmin/Crud'
 
         arobases_sylius_customer_support_plugin.customer_support_answer:
             driver: doctrine/orm
             classes:
                 model: Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer
                 form: Arobases\SyliusCustomerSupportPlugin\Form\Admin\CustomerSupportAnswerType
-            templates: '@SyliusAdmin/Crud'
-
 
 imports:
     - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/grids.yaml" }
     - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/sylius_mailer.yaml" }
-    - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/config.yaml" }
-
+    - { resource: "@ArobasesSyliusCustomerSupportPlugin/Resources/config/twig_hooks.yaml" }

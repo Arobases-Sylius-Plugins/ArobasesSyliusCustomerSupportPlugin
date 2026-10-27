@@ -1,6 +1,0 @@
-{% extends '@SyliusShop/Account/layout.html.twig' %}
-{% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.ticket'|trans }} {{ customer_support.id }} | {{ parent() }}{% endblock %}
-
-{% block subcontent %}
-    {{ sylius_template_event('sylius.shop.account.order.show.subcontent', _context) }}
-{% endblock %}

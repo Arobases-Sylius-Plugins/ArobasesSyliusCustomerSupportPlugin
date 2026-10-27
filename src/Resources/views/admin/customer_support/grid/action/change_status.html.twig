@@ -1,0 +1,13 @@
+<form action="{{ path('arobases_sylius_customer_support_plugin_admin_customer_support_change_status', {'id': data.id}) }}" method="post" {{ sylius_test_html_attribute('action', action.name) }}>
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token(data.id) }}">
+    <button class="btn" type="submit">
+        {% if data.enabled %}
+            {{ ux_icon('tabler:lock', {'class': 'icon'}) }}
+            {{ 'arobases_sylius_customer_support_plugin.ui.close_ticket'|trans }}
+        {% else %}
+            {{ ux_icon('tabler:lock-open', {'class': 'icon'}) }}
+            {{ 'arobases_sylius_customer_support_plugin.ui.open_ticket'|trans }}
+        {% endif %}
+    </button>
+</form>

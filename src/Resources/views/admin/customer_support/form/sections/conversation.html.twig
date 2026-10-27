@@ -1,0 +1,36 @@
+{% set resource = hookable_metadata.context.resource %}
+
+<div class="col-12 col-md-8">
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="card-title">
+                {{ 'sylius.ui.order'|trans }}
+                <a href="{{ path('sylius_admin_order_show', {'id': resource.order.id}) }}">#{{ resource.order.number }}</a>
+                &middot; {{ 'sylius.ui.customer'|trans }} : {{ resource.customer.email }}
+            </div>
+        </div>
+        <div class="list-group list-group-flush">
+            {% for customerSupportAnswer in resource.customerSupportAnswers %}
+                {% set from_admin = customerSupportAnswer.author == 'admin' %}
+                <div class="list-group-item {{ from_admin ? 'bg-light' }}" {{ sylius_test_html_attribute('customer-support-answer') }}>
+                    <div class="d-flex justify-content-between mb-1">
+                        <strong>
+                            {% if from_admin %}
+                                {{ 'arobases_sylius_customer_support_plugin.ui.you'|trans }}
+                            {% else %}
+                                ({{ 'arobases_sylius_customer_support_plugin.ui.client'|trans }}) - {{ customerSupportAnswer.author }}
+                            {% endif %}
+                        </strong>
+                        <span class="text-secondary">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i:s') }}</span>
+                    </div>
+                    <div style="white-space: pre-line">{{ customerSupportAnswer.message }}</div>
+                    {% if customerSupportAnswer.filePath is not null %}
+                        <a href="/{{ customerSupportAnswer.filePath }}" target="_blank" rel="noopener">
+                            {{ ux_icon('tabler:paperclip', {'class': 'icon'}) }} {{ 'arobases_sylius_customer_support_plugin.ui.attachment'|trans }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

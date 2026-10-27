@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Arobases\SyliusCustomerSupportPlugin\EventListener;
 
-use Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManager;
+use Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManagerInterface;
 use Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer;
 use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
 use Sylius\Component\Core\Model\ChannelInterface;
 
 final class CustomerSupportListener implements CustomerSupportListenerInterface
 {
-    private SendNotificationAnswerEmailManager $sendNotificationAnswerEmailManager;
+    private SendNotificationAnswerEmailManagerInterface $sendNotificationAnswerEmailManager;
 
-    public function __construct(SendNotificationAnswerEmailManager $sendNotificationAnswerEmailManager)
+    public function __construct(SendNotificationAnswerEmailManagerInterface $sendNotificationAnswerEmailManager)
     {
         $this->sendNotificationAnswerEmailManager = $sendNotificationAnswerEmailManager;
     }

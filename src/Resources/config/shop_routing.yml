@@ -1,57 +1,59 @@
 arobases_sylius_customer_support_plugin_shop_account_customer_support_index:
-  path: /{_locale}/account/customer-support
-  methods: [GET]
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
-    _sylius:
-      section: shop_account
-      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/index.html.twig"
-      grid: arobases_shop_customer_support
-  requirements:
-    _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+    path: /{_locale}/account/customer-support
+    methods: [GET]
+    defaults:
+        _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
+        _sylius:
+            section: shop_account
+            template: "@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/index.html.twig"
+            grid: arobases_shop_customer_support
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 
 arobases_sylius_customer_support_plugin_shop_customer_support_update:
-  path: /{_locale}/account/customer-support/{id}/update
-  methods: [GET, PUT, POST]
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::updateAction
-    _sylius:
-      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/form.html.twig"
-      form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportType
-      repository:
-        method: findOneByIdAndCustomer
-        arguments:
-          - $id
-          - "expr:service('sylius.context.customer').getCustomer()"
-      redirect:
-        route: arobases_sylius_customer_support_plugin_shop_customer_support_update
-      flash: arobases_sylius_customer_support_plugin.account.add_response
-  requirements:
-    id: \d+
-    _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+    path: /{_locale}/account/customer-support/{id}/update
+    methods: [GET, PUT, POST]
+    defaults:
+        _controller: arobases_sylius_customer_support_plugin.controller.customer_support::updateAction
+        _sylius:
+            section: shop_account
+            template: "@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/update.html.twig"
+            form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportType
+            repository:
+                method: findOneByIdAndCustomer
+                arguments:
+                    - $id
+                    - "expr:service('sylius.context.customer').getCustomer()"
+            redirect:
+                route: arobases_sylius_customer_support_plugin_shop_customer_support_update
+            flash: arobases_sylius_customer_support_plugin.account.add_response
+    requirements:
+        id: \d+
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 
 arobases_sylius_customer_support_plugin_shop_customer_support_create:
-  path: /{_locale}/account/customer-support/add
-  methods: [GET, POST]
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::createAction
-    _sylius:
-      section: shop_account
-      template: "@ArobasesSyliusCustomerSupportPlugin/Shop/Account/CustomerSupport/_form_create.html.twig"
-      form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
-      redirect:
-        route: arobases_sylius_customer_support_plugin_shop_customer_support_update
-      flash: arobases_sylius_customer_support_plugin.account.create_ticket
-  requirements:
-    _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+    path: /{_locale}/account/customer-support/add
+    methods: [GET, POST]
+    defaults:
+        _controller: arobases_sylius_customer_support_plugin.controller.customer_support::createAction
+        _sylius:
+            section: shop_account
+            template: "@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/create.html.twig"
+            form: Arobases\SyliusCustomerSupportPlugin\Form\Shop\CustomerSupportCreateType
+            redirect:
+                route: arobases_sylius_customer_support_plugin_shop_customer_support_update
+            flash: arobases_sylius_customer_support_plugin.account.create_ticket
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
 
 arobases_sylius_customer_support_plugin_shop_customer_support_change_status:
-  path: /{_locale}/account/customer-support/{id}/change-status
-  methods: [PATCH]
-  defaults:
-    _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController::changeStatus
-    _sylius:
-      redirect:  arobases_sylius_customer_support_plugin_shop_account_customer_support_index
-  requirements:
-    id: \d+
-    _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+    path: /{_locale}/account/customer-support/{id}/change-status
+    methods: [PATCH]
+    defaults:
+        _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController::changeStatus
+        _sylius:
+            section: shop_account
+            redirect: arobases_sylius_customer_support_plugin_shop_account_customer_support_index
+    requirements:
+        id: \d+
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$

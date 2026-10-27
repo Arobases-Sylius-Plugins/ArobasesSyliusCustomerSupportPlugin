@@ -1,0 +1,15 @@
+{% set resource = hookable_metadata.context.resource %}
+
+<form action="{{ path('arobases_sylius_customer_support_plugin_admin_customer_support_change_status', {'id': resource.id}) }}" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token(resource.id) }}">
+    <button class="btn" type="submit" {{ sylius_test_html_attribute('change-status-button') }}>
+        {% if resource.enabled %}
+            {{ ux_icon('tabler:lock', {'class': 'icon'}) }}
+            {{ 'arobases_sylius_customer_support_plugin.ui.close_ticket'|trans }}
+        {% else %}
+            {{ ux_icon('tabler:lock-open', {'class': 'icon'}) }}
+            {{ 'arobases_sylius_customer_support_plugin.ui.open_ticket'|trans }}
+        {% endif %}
+    </button>
+</form>

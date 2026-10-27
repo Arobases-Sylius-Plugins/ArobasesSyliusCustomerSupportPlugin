@@ -8,9 +8,16 @@ final class AdminMenuListener
 {
     public function addAdminMenuItems(MenuBuilderEvent $event): void
     {
-        $menu = $event->getMenu();
-        $menu->getChild('sales')->addChild('customer_support',[
-            'route' => 'arobases_sylius_customer_support_plugin_admin_customer_support_index'
-        ])->setLabel('arobases_sylius_customer_support_plugin.menu.admin.customer_support')->setLabelAttribute('icon', 'users');
+        $sales = $event->getMenu()->getChild('sales');
+        if (null === $sales) {
+            return;
+        }
+
+        $sales->addChild('customer_support', [
+            'route' => 'arobases_sylius_customer_support_plugin_admin_customer_support_index',
+            'extras' => ['routes' => [
+                ['route' => 'arobases_sylius_customer_support_plugin_admin_customer_support_update'],
+            ]],
+        ])->setLabel('arobases_sylius_customer_support_plugin.menu.admin.customer_support')->setLabelAttribute('icon', 'tabler:message-circle');
     }
 }

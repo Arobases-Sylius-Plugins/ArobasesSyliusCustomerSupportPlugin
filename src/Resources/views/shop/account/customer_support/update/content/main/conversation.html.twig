@@ -1,0 +1,25 @@
+{% set resource = hookable_metadata.context.resource %}
+
+<div class="list-group mb-4">
+    {% for customerSupportAnswer in resource.customerSupportAnswers %}
+        {% set from_admin = customerSupportAnswer.author == 'admin' %}
+        <div class="list-group-item {{ from_admin ? 'bg-light' }}" {{ sylius_test_html_attribute('customer-support-answer') }}>
+            <div class="d-flex justify-content-between mb-1">
+                <strong>
+                    {% if from_admin %}
+                        {{ sylius.channel.name }}
+                    {% else %}
+                        ({{ 'arobases_sylius_customer_support_plugin.ui.you'|trans }}) - {{ customerSupportAnswer.author }}
+                    {% endif %}
+                </strong>
+                <span class="text-body-tertiary">{{ customerSupportAnswer.createdAt|date('d-m-Y H:i') }}</span>
+            </div>
+            <div style="white-space: pre-line">{{ customerSupportAnswer.message }}</div>
+            {% if customerSupportAnswer.filePath is not null %}
+                <a href="/{{ customerSupportAnswer.filePath }}" target="_blank" rel="noopener">
+                    {{ ux_icon('tabler:paperclip', {'class': 'icon icon-sm'}) }} {{ 'arobases_sylius_customer_support_plugin.ui.attachment'|trans }}
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>

@@ -17,6 +17,7 @@ arobases_sylius_customer_support_plugin:
     close_ticket: Close ticket
     open_ticket: Open ticket
     no_orders: You have no orders
+    ticket_closed: This ticket is closed.
   form:
     to_respond: Reply
     to_create: Create

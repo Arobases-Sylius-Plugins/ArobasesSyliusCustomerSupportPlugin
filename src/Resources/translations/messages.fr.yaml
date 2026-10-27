@@ -20,6 +20,7 @@ arobases_sylius_customer_support_plugin:
         edit_customer_support: Modification d'un SAV
         customer_supports: Liste des Services après vente
         no_orders: Vous n'avez pas de commandes
+        ticket_closed: Ce ticket est fermé.
     menu:
         admin:
             customer_support: Service après vente

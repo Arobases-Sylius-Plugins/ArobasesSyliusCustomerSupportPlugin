@@ -1,48 +1,25 @@
-arobases_sylius_customer_support_plugin_admin_customer_support_index:
-  path: /customer-support
-  methods: [GET]
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::indexAction
-    _sylius:
-      permission: true
-      section: admin
-      grid: arobases_admin_customer_support
-
-
-
-arobases_sylius_customer_support_plugin_admin_customer_support_update:
-  path: /customer-support/{id}/update
-  methods: [GET,PUT]
-  requirements:
-    id: \d+
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::updateAction
-    _sylius:
-      permission: true
-      section: admin
-      redirect: arobases_sylius_customer_support_plugin_admin_customer_support_update
-      template: '@ArobasesSyliusCustomerSupportPlugin/Admin/Crud/update.html.twig'
-      vars:
-        templates:
-          form: '@ArobasesSyliusCustomerSupportPlugin/Admin/form.html.twig'
-
-arobases_sylius_customer_support_plugin_admin_customer_support_delete:
-  path: /customer-support/{id}/delete
-  methods: [DELETE]
-  requirements:
-    id: \d+
-  defaults:
-    _controller: arobases_sylius_customer_support_plugin.controller.customer_support::deleteAction
-    _sylius:
-      permission: true
-      section: admin
-      redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index
+arobases_sylius_customer_support_plugin_admin_customer_support:
+    resource: |
+        alias: arobases_sylius_customer_support_plugin.customer_support
+        path: customer-support
+        section: admin
+        templates: "@SyliusAdmin\\shared\\crud"
+        only: ['index', 'update', 'delete']
+        redirect: update
+        grid: arobases_admin_customer_support
+        permission: true
+        vars:
+            all:
+                hook_prefix: 'arobases_sylius_customer_support_plugin.admin.customer_support'
+    type: sylius.resource
 
 arobases_sylius_customer_support_plugin_admin_customer_support_change_status:
-  path: /customer-support/{id}/change-status
-  methods: [PATCH]
-  defaults:
-    _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController::changeStatus
-    _sylius:
-      section: admin
-      redirect:  arobases_sylius_customer_support_plugin_admin_customer_support_index
+    path: /customer-support/{id}/change-status
+    methods: [PATCH]
+    requirements:
+        id: \d+
+    defaults:
+        _controller: Arobases\SyliusCustomerSupportPlugin\Controller\ChangeStatusCustomerSupportController::changeStatus
+        _sylius:
+            section: admin
+            redirect: arobases_sylius_customer_support_plugin_admin_customer_support_index

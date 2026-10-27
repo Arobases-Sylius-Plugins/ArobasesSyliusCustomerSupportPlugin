@@ -1,0 +1,7 @@
+{% set resource = hookable_metadata.context.resource %}
+
+<h1>{{ 'arobases_sylius_customer_support_plugin.ui.ticket'|trans }} {{ resource.id }}</h1>
+<div class="mb-3">
+    {{ 'sylius.ui.order'|trans }}
+    <a href="{{ path('sylius_shop_account_order_show', {'number': resource.order.number}) }}">#{{ resource.order.number }}</a>
+</div>

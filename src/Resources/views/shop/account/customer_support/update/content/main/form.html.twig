@@ -1,0 +1,18 @@
+{% set resource = hookable_metadata.context.resource %}
+{% set form = hookable_metadata.context.form %}
+
+{% form_theme form '@SyliusShop/form/theme.html.twig' %}
+
+{% if resource.enabled %}
+    {{ form_start(form, {'action': path('arobases_sylius_customer_support_plugin_shop_customer_support_update', {'id': resource.id}), 'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.customerSupportAnswers.message, {'attr': {'rows': 5}}) }}
+    {{ form_row(form.customerSupportAnswers.file) }}
+    <button type="submit" class="btn btn-primary" {{ sylius_test_html_attribute('answer-button') }}>
+        {{ 'arobases_sylius_customer_support_plugin.form.to_respond'|trans }}
+    </button>
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+{% else %}
+    <div class="alert alert-secondary">{{ 'arobases_sylius_customer_support_plugin.ui.ticket_closed'|trans }}</div>
+{% endif %}

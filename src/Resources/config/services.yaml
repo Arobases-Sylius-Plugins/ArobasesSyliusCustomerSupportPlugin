@@ -4,11 +4,10 @@ services:
       tags:
           - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addAdminMenuItems }
 
-  Arobases\SyliusCustomerSupportPlugin\Menu\AccountMenuBuilder:
-    decorates: sylius.shop.menu_builder.account
-    arguments:
-      - '@knp_menu.factory'
-      - '@event_dispatcher'
+  arobases.listener.shop.account_menu_builder:
+      class: Arobases\SyliusCustomerSupportPlugin\Menu\AccountMenuListener
+      tags:
+          - { name: kernel.event_listener, event: sylius.menu.shop.account, method: addAccountMenuItems }
 
   arobases.form.type.shop.order_choice:
     class: Arobases\SyliusCustomerSupportPlugin\Form\Shop\OrderChoiceType
@@ -48,6 +47,8 @@ services:
       - '@arobases_sylius_customer_support_plugin.repository.customer_support'
       - '@router'
       - '@doctrine.orm.default_entity_manager'
+      - '@security.csrf.token_manager'
+      - '@sylius.context.customer'
 
   arobases_sylius_customer_support_plugin.provider.file_name_provider:
     class:  Arobases\SyliusCustomerSupportPlugin\Files\Provider\FileNameProvider
@@ -66,7 +67,9 @@ services:
     class:  Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManager
     arguments:
       - '@sylius.email_sender'
-      - '@sylius.context.locale'
+
+  Arobases\SyliusCustomerSupportPlugin\EmailManager\SendNotificationAnswerEmailManagerInterface:
+    alias: arobases_sylius_customer_support_plugin.email_manager.send_notification_answer_email_manager
 
   Arobases\SyliusCustomerSupportPlugin\EventListener\CustomerSupportListener:
     class: Arobases\SyliusCustomerSupportPlugin\EventListener\CustomerSupportListener

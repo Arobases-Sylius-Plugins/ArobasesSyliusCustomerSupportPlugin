@@ -1,0 +1,16 @@
+{% set form = hookable_metadata.context.form %}
+
+<div class="col-12 col-md-8">
+    {% if hookable_metadata.context.resource.enabled %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="card-title">{{ 'arobases_sylius_customer_support_plugin.ui.new_message'|trans }}</div>
+            </div>
+            <div class="card-body">
+                {{ form_row(form.customerSupportAnswers.message, {'attr': {'rows': 5}}) }}
+                {{ form_row(form.customerSupportAnswers.file) }}
+            </div>
+        </div>
+    {% endif %}
+    {{ form_row(form._token) }}
+</div>

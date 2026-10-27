@@ -1,0 +1,6 @@
+{% extends '@SyliusShop/account/common/create.html.twig' %}
+
+{% set prefixes = ['arobases_sylius_customer_support_plugin.shop.account.customer_support'] %}
+{% set attrs = { resource, form } %}
+
+{% block title %}{{ 'arobases_sylius_customer_support_plugin.ui.new_ticket'|trans }} | {{ parent() }}{% endblock %}

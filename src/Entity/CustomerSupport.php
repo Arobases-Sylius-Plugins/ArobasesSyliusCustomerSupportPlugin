@@ -8,56 +8,40 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Sylius\Component\Core\Model\Customer;
 use Sylius\Component\Core\Model\CustomerInterface;
-use Sylius\Component\Core\Model\Order;
 use Sylius\Component\Core\Model\OrderInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\ToggleableTrait;
+use Sylius\Resource\Model\ResourceInterface;
+use Sylius\Resource\Model\ToggleableTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="arobases_customer_support")
- */
-
+#[ORM\Entity]
+#[ORM\Table(name: 'arobases_customer_support')]
 class CustomerSupport implements ResourceInterface {
 
     use TimestampableEntity;
 
     use ToggleableTrait;
 
-    /**
-     * @var bool
-     * @ORM\Column(type="boolean")
-     */
+    /** @var bool */
+    #[ORM\Column(type: 'boolean')]
     protected $enabled = true;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     protected ?int $id = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Sylius\Component\Core\Model\Customer", inversedBy="id", fetch="EXTRA_LAZY")
-     *
-     */
-    protected ?Customer $customer = null;
+    #[ORM\ManyToOne(targetEntity: CustomerInterface::class, fetch: 'EXTRA_LAZY')]
+    protected ?CustomerInterface $customer = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Sylius\Component\Core\Model\Order", inversedBy="id", fetch="EXTRA_LAZY")
-     *
-     */
-    protected ?Order $order = null;
+    #[ORM\ManyToOne(targetEntity: OrderInterface::class, fetch: 'EXTRA_LAZY')]
+    protected ?OrderInterface $order = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupportAnswer",
-     *     mappedBy="customerSupport", fetch="EXTRA_LAZY",
-     *     cascade={"persist", "remove"}
-     *      )
-     */
-
+    #[ORM\OneToMany(
+        mappedBy: 'customerSupport',
+        targetEntity: CustomerSupportAnswer::class,
+        cascade: ['persist', 'remove'],
+        fetch: 'EXTRA_LAZY',
+    )]
     protected Collection $customerSupportAnswers;
 
     public function __construct()

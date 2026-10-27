@@ -6,48 +6,37 @@ namespace Arobases\SyliusCustomerSupportPlugin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Resource\Model\ResourceInterface;
 use Symfony\Component\HttpFoundation\File\File;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="arobases_customer_support_answer")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'arobases_customer_support_answer')]
 class CustomerSupportAnswer implements ResourceInterface
 {
     use TimestampableEntity;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     protected ?int $id = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Arobases\SyliusCustomerSupportPlugin\Entity\CustomerSupport",
-     *     inversedBy="customerSupportAnswers",
-     *     fetch="EXTRA_LAZY",
-     *      cascade={"persist", "remove"}
-     * )
-     */
+    #[ORM\ManyToOne(
+        targetEntity: CustomerSupport::class,
+        inversedBy: 'customerSupportAnswers',
+        cascade: ['persist', 'remove'],
+        fetch: 'EXTRA_LAZY',
+    )]
     protected ?CustomerSupport $customerSupport = null;
 
-    /**
-     * @ORM\Column(type="text")
-     */
+    #[ORM\Column(type: 'text')]
     protected string $message;
 
 
-    /**
-     * @ORM\Column(type="text", length=70)
-     */
+    #[ORM\Column(type: 'text', length: 70)]
     protected string $author;
 
 
-    /**
-     * @ORM\Column(type="string", length=511, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 511, nullable: true)]
     protected ?string $filePath = null;
 
     protected ?File $file = null;

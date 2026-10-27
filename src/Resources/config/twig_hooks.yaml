@@ -1,0 +1,90 @@
+sylius_twig_hooks:
+    hooks:
+        # Admin - ticket (update page)
+        'arobases_sylius_customer_support_plugin.admin.customer_support.update.content':
+            form:
+                template: '@SyliusAdmin/shared/crud/common/content/form.html.twig'
+                configuration:
+                    render_rest: false
+                priority: 100
+
+        'arobases_sylius_customer_support_plugin.admin.customer_support.update.content.header.title_block':
+            title:
+                template: '@SyliusAdmin/shared/crud/update/content/header/title_block/title.html.twig'
+                configuration:
+                    header: 'arobases_sylius_customer_support_plugin.ui.edit_customer_support'
+                priority: 100
+
+        'arobases_sylius_customer_support_plugin.admin.customer_support.update.content.header.title_block.actions':
+            show:
+                enabled: false
+            change_status:
+                template: '@ArobasesSyliusCustomerSupportPlugin/admin/customer_support/update/content/header/title_block/actions/change_status.html.twig'
+                priority: 50
+            update:
+                template: '@ArobasesSyliusCustomerSupportPlugin/admin/customer_support/update/content/header/title_block/actions/answer.html.twig'
+                priority: 0
+
+        'arobases_sylius_customer_support_plugin.admin.customer_support.update.content.form.sections':
+            general:
+                enabled: false
+            conversation:
+                template: '@ArobasesSyliusCustomerSupportPlugin/admin/customer_support/form/sections/conversation.html.twig'
+                priority: 100
+            answer:
+                template: '@ArobasesSyliusCustomerSupportPlugin/admin/customer_support/form/sections/answer.html.twig'
+                priority: 0
+
+        # Shop - account: tickets list
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.index.content':
+            breadcrumbs:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/common/content/breadcrumbs.html.twig'
+                priority: 200
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.index.content.main.header':
+            title:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/index/content/main/header/title.html.twig'
+                priority: 100
+            create:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/index/content/main/header/create.html.twig'
+                priority: 0
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.index.content.main':
+            grid:
+                template: '@SyliusShop/shared/grid.html.twig'
+                priority: -100
+
+        # Shop - account: new ticket
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.create.content':
+            breadcrumbs:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/common/content/breadcrumbs.html.twig'
+                priority: 200
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.create.content.main.header':
+            title:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/create/content/main/header/title.html.twig'
+                priority: 0
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.create.content.main':
+            form:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/create/content/main/form.html.twig'
+                priority: -100
+
+        # Shop - account: ticket
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.update.content':
+            breadcrumbs:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/common/content/breadcrumbs.html.twig'
+                priority: 200
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.update.content.main.header':
+            title:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/update/content/main/header/title.html.twig'
+                priority: 0
+
+        'arobases_sylius_customer_support_plugin.shop.account.customer_support.update.content.main':
+            conversation:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/update/content/main/conversation.html.twig'
+                priority: -100
+            form:
+                template: '@ArobasesSyliusCustomerSupportPlugin/shop/account/customer_support/update/content/main/form.html.twig'
+                priority: -200
